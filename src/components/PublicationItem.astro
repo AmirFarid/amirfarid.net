@@ -1,0 +1,34 @@
+---
+interface Link {
+  label: string;
+  url: string;
+}
+
+interface Props {
+  title: string;
+  authors: string[];
+  venue?: string;
+  status: string;
+  year?: number;
+  links?: Link[];
+}
+
+const { title, authors, venue, status, year, links = [] } = Astro.props;
+---
+
+<article class="card stack" style="gap: 10px;">
+  <h3>{title}</h3>
+  <p class="muted">{authors.join(', ')}</p>
+  <p>
+    <strong>{status}</strong>
+    {venue ? ` · ${venue}` : ' · Venue placeholder'}
+    {year ? ` · ${year}` : ''}
+  </p>
+  {links.length > 0 && (
+    <div class="button-row">
+      {links.map((link) => (
+        <a class="button secondary" href={link.url}>{link.label}</a>
+      ))}
+    </div>
+  )}
+</article>

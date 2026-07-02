@@ -1,0 +1,21 @@
+---
+import { getCollection, render } from 'astro:content';
+import LearningPostLayout from '../../layouts/LearningPostLayout.astro';
+import { featureFlags } from '../../config/site';
+
+export async function getStaticPaths() {
+  if (!featureFlags.learning) {
+    return [];
+  }
+
+  const posts = await getCollection('learning');
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<LearningPostLayout {...post.data}>
+  <Content />
+</LearningPostLayout>

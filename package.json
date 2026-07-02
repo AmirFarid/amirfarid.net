@@ -1,0 +1,29 @@
+{
+  "name": "amir-farid-academic-website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "prebuild": "node scripts/generate-version.mjs",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "format": "prettier --write .",
+    "new:learning": "node scripts/new-content.mjs learning",
+    "new:technical": "node scripts/new-content.mjs technical",
+    "new:blog": "node scripts/new-content.mjs blog",
+    "new:project": "node scripts/new-content.mjs project",
+    "new:publication": "node scripts/new-content.mjs publication",
+    "version:generate": "node scripts/generate-version.mjs"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/mdx": "^4.0.8",
+    "astro": "^5.1.1",
+    "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "prettier-plugin-astro": "^0.14.1"
+  }
+}

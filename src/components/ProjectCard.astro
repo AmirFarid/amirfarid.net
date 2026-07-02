@@ -1,0 +1,36 @@
+---
+import TagList from './TagList.astro';
+
+interface Link {
+  label: string;
+  url: string;
+}
+
+interface Props {
+  title: string;
+  summary: string;
+  role: string;
+  technologies: string[];
+  status: string;
+  tags?: string[];
+  links?: Link[];
+}
+
+const { title, summary, role, technologies, status, tags = [], links = [] } = Astro.props;
+---
+
+<article class="card stack" style="gap: 14px;">
+  <p class="card-kicker">{status}</p>
+  <h3>{title}</h3>
+  <p class="muted">{summary}</p>
+  <p><strong>Role:</strong> {role}</p>
+  <p class="muted"><strong>Technologies:</strong> {technologies.join(', ')}</p>
+  <TagList tags={tags} />
+  {links.length > 0 && (
+    <div class="button-row">
+      {links.map((link) => (
+        <a class="button secondary" href={link.url}>{link.label}</a>
+      ))}
+    </div>
+  )}
+</article>

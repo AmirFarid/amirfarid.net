@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+const themes = [
+  'Systems security',
+  'Trusted hardware',
+  'Distributed and decentralized storage',
+  'IoT, embedded, edge, and connected systems',
+  'File systems and flash-storage behavior',
+  'LLM-assisted security and safety',
+];
+---
+
+<BaseLayout title="Research" description="Research overview and themes for Amir Farid.">
+  <div class="page container stack">
+    <SectionHeader
+      eyebrow="Research"
+      title="Security and reliability for connected systems"
+      summary="My research studies how connected systems can remain secure, auditable, and resilient when they combine constrained devices, distributed infrastructure, storage layers, and emerging AI-assisted workflows."
+    />
+
+    <section class="prose">
+      <h2>Research Overview</h2>
+      <p>
+        I work on problems at the boundary between systems security and real-world connected infrastructure. This
+        includes trusted hardware, storage behavior, decentralized storage protocols, embedded and edge devices, and
+        AI/ML-assisted methods for understanding malicious behavior.
+      </p>
+      <p>
+        The goal is to design mechanisms that are practical enough for deployment constraints while remaining clear
+        about their assumptions, threat models, and limitations.
+      </p>
+    </section>
+
+    <section class="stack">
+      <h2>Research Themes</h2>
+      <div class="grid grid-3">
+        {themes.map((theme) => (
+          <article class="card">
+            <h3>{theme}</h3>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="prose">
+      <h2>Current Direction</h2>
+      <p>
+        My current direction connects decentralized storage, authenticated behavior at lower system layers, trusted
+        execution environments, and AI-assisted security analysis. I am especially interested in security mechanisms
+        that reduce expensive coordination while preserving useful evidence about system behavior.
+      </p>
+    </section>
+
+    <section class="prose">
+      <h2>Selected Problems</h2>
+      <ul>
+        <li>How can distributed storage systems reduce audit cost without weakening integrity guarantees?</li>
+        <li>How can storage-stack behavior provide trustworthy signals for higher-level security decisions?</li>
+        <li>How should trusted hardware be used carefully in systems that still need practical failure recovery?</li>
+        <li>How can LLM-assisted tools help identify unsafe behavior without overstating their reliability?</li>
+      </ul>
+    </section>
+  </div>
+</BaseLayout>

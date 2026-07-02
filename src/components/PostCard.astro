@@ -1,0 +1,29 @@
+---
+import TagList from './TagList.astro';
+
+interface Props {
+  href: string;
+  title: string;
+  summary: string;
+  date: Date;
+  tags?: string[];
+  badge?: string;
+}
+
+const { href, title, summary, date, tags = [], badge } = Astro.props;
+const formattedDate = date.toLocaleDateString('en', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+---
+
+<article class="card stack" style="gap: 13px;">
+  <div class="meta">
+    <time datetime={date.toISOString()}>{formattedDate}</time>
+    {badge && <span>{badge}</span>}
+  </div>
+  <h3><a href={href}>{title}</a></h3>
+  <p class="muted">{summary}</p>
+  <TagList tags={tags} />
+</article>

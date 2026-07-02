@@ -1,0 +1,39 @@
+---
+title: What Is an FTL?
+summary: A short explanation of the flash translation layer and why flash storage does not behave like a simple array of blocks.
+date: 2026-01-14
+level: Beginner
+prerequisites:
+  - Basic storage terminology
+tags:
+  - storage
+  - flash
+  - FTL
+interactive: false
+---
+
+## Summary
+
+An FTL, or flash translation layer, maps the block interface that software expects onto the constraints of flash memory.
+
+## Prerequisites
+
+It helps to know that operating systems usually read and write storage through logical block addresses.
+
+## Core Idea
+
+Flash memory cannot overwrite data in place like a simple disk abstraction suggests. It writes pages and erases larger blocks. The FTL hides this mismatch by remapping logical writes to physical locations.
+
+## Simple Example
+
+When software updates logical block 10, the device may write the new version somewhere else and mark the old physical page invalid.
+
+## Common Confusion
+
+The FTL is not just a lookup table. It also affects garbage collection, wear leveling, write amplification, and sometimes the security meaning of storage behavior.
+
+## Further Reading
+
+- Flash memory erase blocks
+- Log-structured storage
+- Write amplification

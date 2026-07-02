@@ -1,0 +1,35 @@
+---
+import { featureFlags } from '../config/site';
+
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/research', label: 'Research' },
+  { href: '/projects', label: 'Projects', enabled: featureFlags.projects },
+  { href: '/publications', label: 'Publications', enabled: featureFlags.publications },
+  { href: '/learning', label: 'Learning', enabled: featureFlags.learning },
+  { href: '/technical', label: 'Technical Notes', enabled: featureFlags.technical },
+  { href: '/blog', label: 'Blog', enabled: featureFlags.blog },
+  { href: '/cv', label: 'CV' },
+].filter((item) => item.enabled !== false);
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="site-name" href="/">Amir Farid</a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      {
+        navItems.map((item) => {
+          const itemPath = item.href.replace(/\/$/, '') || '/';
+          const isCurrent = currentPath === itemPath;
+          return (
+            <a href={item.href} aria-current={isCurrent ? 'page' : undefined}>
+              {item.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+  </div>
+</header>

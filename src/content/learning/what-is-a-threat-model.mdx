@@ -1,0 +1,40 @@
+---
+title: What Is a Threat Model?
+summary: A first-principles introduction to describing what a system protects, who might attack it, and what assumptions the design relies on.
+date: 2026-01-10
+updated: 2026-01-10
+level: Beginner
+prerequisites:
+  - Basic security vocabulary
+tags:
+  - security
+  - systems
+  - threat modeling
+interactive: false
+---
+
+## Summary
+
+A threat model is a structured way to say what can go wrong, who might cause it, and what a system is expected to withstand.
+
+## Prerequisites
+
+You only need a basic sense that systems have assets, users, attackers, and assumptions.
+
+## Core Idea
+
+Instead of saying that a system is simply secure or insecure, a threat model defines the security question. It identifies assets, adversaries, entry points, trust boundaries, assumptions, and expected failures.
+
+## Simple Example
+
+For a small web service, assets might include user accounts and private messages. Threats might include stolen credentials, malicious requests, or accidental data exposure through logs.
+
+## Common Confusion
+
+A threat model is not a proof that the system is safe. It is a map of the problem space so design and testing decisions are easier to reason about.
+
+## Further Reading
+
+- STRIDE threat modeling
+- Attack trees
+- Security design reviews

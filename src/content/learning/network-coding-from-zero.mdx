@@ -1,0 +1,40 @@
+---
+title: Network Coding from Zero
+summary: A gentle introduction to the idea of mixing data blocks so distributed systems can recover information flexibly.
+date: 2026-01-12
+level: Intermediate
+prerequisites:
+  - Basic linear algebra
+  - Distributed storage vocabulary
+tags:
+  - network coding
+  - storage
+  - distributed systems
+interactive: false
+---
+
+## Summary
+
+Network coding treats stored or transmitted pieces as combinations of original data, not only as exact copies.
+
+## Prerequisites
+
+It helps to know that vectors can be added and multiplied by coefficients, and that independent equations can recover unknown values.
+
+## Core Idea
+
+Instead of storing block A and block B separately, a system can store combinations such as A + B or 2A + B. If enough independent combinations are available, the original data can be reconstructed.
+
+## Simple Example
+
+Suppose two original blocks are `x` and `y`. If a receiver obtains `x + y` and `x - y`, it can solve for both originals.
+
+## Common Confusion
+
+Network coding is not compression by itself. It is a way of changing how information is represented and recovered across a network or storage system.
+
+## Further Reading
+
+- Linear network coding
+- Erasure coding
+- Repair bandwidth in distributed storage

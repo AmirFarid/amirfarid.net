@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { featureFlags } from '../config/site';
+
+const posts = featureFlags.technical
+  ? (await getCollection('technical')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  : [];
+---
+
+<BaseLayout title="Technical Notes" description="Implementation and debugging notes by Amir Farid." noindex={!featureFlags.technical}>
+  <div class="page container stack">
+    {
+      featureFlags.technical ? (
+        <>
+          <SectionHeader
+            eyebrow="Technical"
+            title="Technical Notes"
+            summary="Implementation notes, debugging records, commands, experiments, and reproducible fixes."
+          />
+          <div class="grid grid-2">
+            {posts.map((post) => (
+              <PostCard
+                href={`/technical/${post.slug}`}
+                title={post.data.title}
+                summary={post.data.summary}
+                date={post.data.date}
+                tags={post.data.tags}
+                badge={post.data.environment}
+              />
+            ))}
+          </div>
+        </>
+      ) : (
+        <section class="container-narrow stack">
+          <SectionHeader eyebrow="Technical" title="Technical Notes are coming soon." />
+          <p class="lead">
+            This section will contain implementation notes, debugging records, commands, experiments, and reproducible
+            engineering details.
+          </p>
+        </section>
+      )
+    }
+  </div>
+</BaseLayout>

@@ -1,0 +1,106 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { featureFlags } from '../config/site';
+
+const projects = (await getCollection('projects')).slice(0, 3);
+---
+
+<BaseLayout
+  title="Amir Farid"
+  description="Computer Science PhD student working on security, privacy, and safety for connected systems."
+>
+  <section class="hero container stack" style="gap: 28px;">
+    <div class="stack" style="gap: 14px;">
+      <p class="eyebrow">Computer Science PhD Student</p>
+      <h1>Amir Farid</h1>
+      <p class="lead">Security, privacy, and safety for connected systems</p>
+    </div>
+    <div class="stack" style="gap: 16px; max-width: 850px;">
+      <p>
+        I am Amir Farid, a Computer Science PhD student at Michigan Technological University. My research
+        focuses on security, privacy, and safety for connected systems, especially IoT, embedded, edge, and
+        distributed environments.
+      </p>
+      <p class="muted">
+        My work sits at the intersection of systems security, trusted hardware, distributed storage, file-system
+        and flash-storage behavior, and emerging AI/ML-assisted methods for detecting and mitigating malicious
+        behavior in real-world connected infrastructures.
+      </p>
+    </div>
+    <div class="button-row">
+      <a class="button" href="/research">Research</a>
+      <a class="button secondary" href="/cv">CV</a>
+    </div>
+  </section>
+
+  <section class="page container stack">
+    <SectionHeader title="Current Research Focus" summary="A compact view of the systems and security problems I am currently organizing my work around." />
+    <div class="grid grid-3">
+      <article class="card stack" style="gap: 10px;">
+        <p class="card-kicker">Security</p>
+        <h3>Systems Security</h3>
+        <p class="muted">Trusted hardware, storage systems, and secure system design.</p>
+      </article>
+      <article class="card stack" style="gap: 10px;">
+        <p class="card-kicker">Storage</p>
+        <h3>Distributed Storage</h3>
+        <p class="muted">Decentralized storage, erasure/network coding, audit and repair mechanisms.</p>
+      </article>
+      <article class="card stack" style="gap: 10px;">
+        <p class="card-kicker">Safety</p>
+        <h3>AI/ML-Assisted Security</h3>
+        <p class="muted">LLM-assisted detection, prompt-injection/jailbreak analysis, and safety for connected systems.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="page container stack">
+    <SectionHeader title="Featured Projects" summary="Selected research and teaching infrastructure projects." />
+    <div class="grid grid-3">
+      {projects.map((project) => <ProjectCard {...project.data} />)}
+    </div>
+  </section>
+
+  <section class="page container stack">
+    <SectionHeader title="Writing" summary="Essays and notes that are ready for public reading." />
+    <div class="grid grid-3">
+      {
+        featureFlags.learning && (
+          <a class="card stack" style="gap: 10px; text-decoration: none; color: inherit;" href="/learning">
+            <p class="card-kicker">Conceptual</p>
+            <h3>Learning Notes</h3>
+            <p class="muted">Structured explanations and future interactive lessons.</p>
+          </a>
+        )
+      }
+      {
+        featureFlags.technical && (
+          <a class="card stack" style="gap: 10px; text-decoration: none; color: inherit;" href="/technical">
+            <p class="card-kicker">Practical</p>
+            <h3>Technical Notes</h3>
+            <p class="muted">Implementation notes, debugging records, commands, and experiments.</p>
+          </a>
+        )
+      }
+      <a class="card stack" style="gap: 10px; text-decoration: none; color: inherit;" href="/blog">
+        <p class="card-kicker">Reflective</p>
+        <h3>Blog</h3>
+        <p class="muted">Personal essays on research, learning, and PhD life.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="page container stack">
+    <SectionHeader title="Links" summary="Placeholder links are ready to be replaced with confirmed public profiles." />
+    <div class="button-row">
+      <a class="button secondary" href="/cv.pdf">CV</a>
+      <a class="button secondary" href="#">GitHub</a>
+      <a class="button secondary" href="#">LinkedIn</a>
+      <a class="button secondary" href="#">Google Scholar</a>
+      <a class="button secondary" href="#">Email</a>
+    </div>
+  </section>
+</BaseLayout>

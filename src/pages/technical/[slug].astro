@@ -1,0 +1,29 @@
+---
+import { getCollection, render } from 'astro:content';
+import PostLayout from '../../layouts/PostLayout.astro';
+import { featureFlags } from '../../config/site';
+
+export async function getStaticPaths() {
+  if (!featureFlags.technical) {
+    return [];
+  }
+
+  const posts = await getCollection('technical');
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<PostLayout
+  title={post.data.title}
+  summary={post.data.summary}
+  date={post.data.date}
+  updated={post.data.updated}
+  tags={post.data.tags}
+  eyebrow="Technical Note"
+  details={[post.data.environment, `Tools: ${post.data.tools.join(', ')}`]}
+>
+  <Content />
+</PostLayout>

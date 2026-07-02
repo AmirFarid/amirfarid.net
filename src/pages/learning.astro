@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { featureFlags } from '../config/site';
+
+const posts = featureFlags.learning
+  ? (await getCollection('learning')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  : [];
+---
+
+<BaseLayout title="Learning Notes" description="Conceptual learning notes by Amir Farid." noindex={!featureFlags.learning}>
+  <div class="page container stack">
+    {
+      featureFlags.learning ? (
+        <>
+          <SectionHeader
+            eyebrow="Learning"
+            title="Learning Notes"
+            summary="Conceptual explanations from first principles, structured for future interactive teaching components."
+          />
+          <div class="grid grid-3">
+            {posts.map((post) => (
+              <PostCard
+                href={`/learning/${post.slug}`}
+                title={post.data.title}
+                summary={post.data.summary}
+                date={post.data.date}
+                tags={post.data.tags}
+                badge={post.data.level}
+              />
+            ))}
+          </div>
+        </>
+      ) : (
+        <section class="container-narrow stack">
+          <SectionHeader eyebrow="Learning" title="Learning Notes are coming soon." />
+          <p class="lead">
+            This section will contain structured explanations, study notes, and future interactive lessons on systems,
+            security, storage, and AI-assisted security.
+          </p>
+        </section>
+      )
+    }
+  </div>
+</BaseLayout>
