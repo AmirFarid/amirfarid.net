@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">Abstract coded storage grid</title>
+  <desc id="desc">A structured grid with highlighted paths and storage blocks.</desc>
+  <rect width="1200" height="750" fill="#fbfaf7"/>
+  <g stroke="#dbe4dd" stroke-width="3">
+    <path d="M160 150h880M160 270h880M160 390h880M160 510h880M160 630h880"/>
+    <path d="M160 150v480M336 150v480M512 150v480M688 150v480M864 150v480M1040 150v480"/>
+  </g>
+  <g fill="#ffffff" stroke="#0f4f3f" stroke-width="5">
+    <rect x="204" y="194" width="88" height="52" rx="10"/>
+    <rect x="380" y="314" width="88" height="52" rx="10"/>
+    <rect x="556" y="434" width="88" height="52" rx="10"/>
+    <rect x="732" y="314" width="88" height="52" rx="10"/>
+    <rect x="908" y="194" width="88" height="52" rx="10"/>
+  </g>
+  <path d="M248 220C420 220 392 340 424 340c78 0 84 120 176 120 96 0 96-120 176-120 42 0 14-120 176-120" fill="none" stroke="#9a7a2f" stroke-width="10" stroke-linecap="round"/>
+  <g fill="#0f4f3f">
+    <circle cx="248" cy="220" r="16"/>
+    <circle cx="424" cy="340" r="16"/>
+    <circle cx="600" cy="460" r="16"/>
+    <circle cx="776" cy="340" r="16"/>
+    <circle cx="952" cy="220" r="16"/>
+  </g>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">Workshop challenge board</title>
+  <desc id="desc">A clean classroom-style challenge board with connected prompt cards.</desc>
+  <rect width="1200" height="750" fill="#f8f7f2"/>
+  <rect x="120" y="100" width="960" height="550" rx="28" fill="#ffffff" stroke="#dbe4dd" stroke-width="4"/>
+  <g fill="#e6f0ec" stroke="#0f4f3f" stroke-width="5">
+    <rect x="210" y="190" width="250" height="120" rx="18"/>
+    <rect x="740" y="190" width="250" height="120" rx="18"/>
+    <rect x="475" y="430" width="250" height="120" rx="18"/>
+  </g>
+  <g stroke="#9a7a2f" stroke-width="8" stroke-linecap="round">
+    <path d="M460 250h280"/>
+    <path d="M335 310l265 120"/>
+    <path d="M865 310L600 430"/>
+  </g>
+  <g fill="#0f4f3f">
+    <circle cx="335" cy="250" r="22"/>
+    <circle cx="865" cy="250" r="22"/>
+    <circle cx="600" cy="490" r="22"/>
+  </g>
+  <g stroke="#5f675f" stroke-width="5" stroke-linecap="round">
+    <path d="M270 355h660"/>
+    <path d="M270 590h660"/>
+  </g>
+</svg>

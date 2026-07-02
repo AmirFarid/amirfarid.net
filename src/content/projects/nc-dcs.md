@@ -9,6 +9,9 @@ technologies:
   - network coding
   - storage security
 status: In progress
+image:
+  src: /images/project-nc-dcs.svg
+  alt: Abstract grid representing coded storage paths
 tags:
   - network coding
   - storage security

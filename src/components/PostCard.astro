@@ -8,9 +8,13 @@ interface Props {
   date: Date;
   tags?: string[];
   badge?: string;
+  image?: {
+    src: string;
+    alt: string;
+  };
 }
 
-const { href, title, summary, date, tags = [], badge } = Astro.props;
+const { href, title, summary, date, tags = [], badge, image } = Astro.props;
 const formattedDate = date.toLocaleDateString('en', {
   year: 'numeric',
   month: 'short',
@@ -19,6 +23,13 @@ const formattedDate = date.toLocaleDateString('en', {
 ---
 
 <article class="card stack" style="gap: 13px;">
+  {
+    image && (
+      <a href={href} aria-label={title}>
+        <img class="card-image" src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+      </a>
+    )
+  }
   <div class="meta">
     <time datetime={date.toISOString()}>{formattedDate}</time>
     {badge && <span>{badge}</span>}

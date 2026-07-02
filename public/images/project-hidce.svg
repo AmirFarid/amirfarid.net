@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">Abstract storage system diagram</title>
+  <desc id="desc">Layered blocks connected by clean lines on a quiet academic background.</desc>
+  <rect width="1200" height="750" fill="#f7faf8"/>
+  <rect x="92" y="86" width="1016" height="578" rx="28" fill="#ffffff" stroke="#dbe4dd" stroke-width="4"/>
+  <g fill="#e6f0ec" stroke="#0f4f3f" stroke-width="5">
+    <rect x="170" y="178" width="220" height="128" rx="16"/>
+    <rect x="490" y="178" width="220" height="128" rx="16"/>
+    <rect x="810" y="178" width="220" height="128" rx="16"/>
+    <rect x="330" y="444" width="220" height="128" rx="16"/>
+    <rect x="650" y="444" width="220" height="128" rx="16"/>
+  </g>
+  <g stroke="#9a7a2f" stroke-width="7" stroke-linecap="round">
+    <path d="M390 242h100"/>
+    <path d="M710 242h100"/>
+    <path d="M280 306l160 138"/>
+    <path d="M600 306L440 444"/>
+    <path d="M920 306L760 444"/>
+  </g>
+  <circle cx="280" cy="242" r="30" fill="#0f4f3f"/>
+  <circle cx="600" cy="242" r="30" fill="#0f4f3f"/>
+  <circle cx="920" cy="242" r="30" fill="#0f4f3f"/>
+  <circle cx="440" cy="508" r="30" fill="#0f4f3f"/>
+  <circle cx="760" cy="508" r="30" fill="#0f4f3f"/>
+</svg>

@@ -12,14 +12,23 @@ interface Props {
   role: string;
   technologies: string[];
   status: string;
+  image?: {
+    src: string;
+    alt: string;
+  };
   tags?: string[];
   links?: Link[];
 }
 
-const { title, summary, role, technologies, status, tags = [], links = [] } = Astro.props;
+const { title, summary, role, technologies, status, image, tags = [], links = [] } = Astro.props;
 ---
 
 <article class="card stack" style="gap: 14px;">
+  {
+    image && (
+      <img class="card-image" src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+    )
+  }
   <p class="card-kicker">{status}</p>
   <h3>{title}</h3>
   <p class="muted">{summary}</p>

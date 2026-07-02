@@ -9,6 +9,9 @@ technologies:
   - Raspberry Pi
   - prompt-injection challenges
 status: Completed prototype
+image:
+  src: /images/project-llm-hackathon.svg
+  alt: Abstract challenge board for an educational workshop
 tags:
   - LLM security
   - education

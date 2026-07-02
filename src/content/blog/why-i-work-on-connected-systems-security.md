@@ -2,6 +2,9 @@
 title: Why I Work on Connected Systems Security
 summary: A short reflection on the practical and intellectual motivation behind studying security for connected infrastructure.
 date: 2026-01-20
+image:
+  src: /images/blog-connected-systems.svg
+  alt: Abstract connected systems essay cover
 tags:
   - research
   - PhD

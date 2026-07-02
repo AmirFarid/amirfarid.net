@@ -10,9 +10,13 @@ interface Props {
   tags?: string[];
   eyebrow: string;
   details?: string[];
+  image?: {
+    src: string;
+    alt: string;
+  };
 }
 
-const { title, summary, date, updated, tags = [], eyebrow, details = [] } = Astro.props;
+const { title, summary, date, updated, tags = [], eyebrow, details = [], image } = Astro.props;
 const formatDate = (value: Date) =>
   value.toLocaleDateString('en', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
@@ -30,6 +34,7 @@ const formatDate = (value: Date) =>
       </div>
       <TagList tags={tags} />
     </header>
+    {image && <img class="post-image" src={image.src} alt={image.alt} loading="eager" decoding="async" />}
     <div class="prose">
       <slot />
     </div>

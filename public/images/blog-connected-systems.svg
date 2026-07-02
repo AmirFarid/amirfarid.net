@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">Connected systems essay cover</title>
+  <desc id="desc">Abstract connected devices arranged around a calm research notebook layout.</desc>
+  <rect width="1200" height="750" fill="#fbfaf7"/>
+  <rect x="150" y="104" width="900" height="542" rx="24" fill="#ffffff" stroke="#dbe4dd" stroke-width="4"/>
+  <g stroke="#0f4f3f" stroke-width="7" stroke-linecap="round">
+    <path d="M335 286h530"/>
+    <path d="M430 286l-92 152"/>
+    <path d="M770 286l92 152"/>
+    <path d="M600 286v196"/>
+  </g>
+  <g fill="#e6f0ec" stroke="#0f4f3f" stroke-width="5">
+    <rect x="260" y="214" width="150" height="144" rx="18"/>
+    <rect x="525" y="214" width="150" height="144" rx="18"/>
+    <rect x="790" y="214" width="150" height="144" rx="18"/>
+    <rect x="272" y="438" width="132" height="94" rx="16"/>
+    <rect x="534" y="482" width="132" height="94" rx="16"/>
+    <rect x="796" y="438" width="132" height="94" rx="16"/>
+  </g>
+  <circle cx="600" cy="286" r="28" fill="#9a7a2f"/>
+</svg>

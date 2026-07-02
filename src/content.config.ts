@@ -9,6 +9,13 @@ const linkSchema = z
   )
   .default([]);
 
+const imageSchema = z
+  .object({
+    src: z.string(),
+    alt: z.string(),
+  })
+  .optional();
+
 const learning = defineCollection({
   type: "content",
   schema: z.object({
@@ -42,6 +49,7 @@ const blog = defineCollection({
     title: z.string(),
     summary: z.string(),
     date: z.coerce.date(),
+    image: imageSchema,
     tags: z.array(z.string()).default([]),
   }),
 });
@@ -54,6 +62,7 @@ const projects = defineCollection({
     role: z.string(),
     technologies: z.array(z.string()).default([]),
     status: z.string(),
+    image: imageSchema,
     tags: z.array(z.string()).default([]),
     links: linkSchema,
   }),

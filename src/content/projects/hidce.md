@@ -9,6 +9,9 @@ technologies:
   - distributed storage
   - cryptographic verification
 status: Submitted
+image:
+  src: /images/project-hidce.svg
+  alt: Abstract diagram representing distributed storage blocks
 tags:
   - trusted hardware
   - decentralized storage
