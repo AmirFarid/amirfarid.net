@@ -1,6 +1,6 @@
 # Agent Notes
 
-This is Amir M. Farid's personal academic website.
+This is Amir M. M. Farid's personal academic website.
 
 ## Design
 

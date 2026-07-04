@@ -7,12 +7,12 @@ import SectionHeader from '../components/SectionHeader.astro';
 const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<BaseLayout title="Blog" description="Professional and reflective writing by Amir M. Farid.">
+<BaseLayout title="Blog" description="Professional and reflective writing by Amir M. M. Farid.">
   <div class="page container stack">
     <SectionHeader
       eyebrow="Blog"
       title="Blog"
-      summary="Personal and professional reflections on research, learning, PhD life, books, and academic growth."
+      summary="Personal and professional reflections on research, learning, graduate school, books, and academic growth."
     />
     <div class="grid grid-2">
       {posts.map((post) => (

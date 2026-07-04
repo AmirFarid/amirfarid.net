@@ -7,7 +7,7 @@ image:
   alt: Abstract connected systems essay cover
 tags:
   - research
-  - PhD
+  - graduate school
   - connected systems
 ---
 
