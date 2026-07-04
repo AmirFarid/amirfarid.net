@@ -1,0 +1,9 @@
+---
+import { analytics } from '../config/site';
+---
+
+{
+  analytics.enabled && analytics.provider === 'plausible' && (
+    <script is:inline defer data-domain={analytics.domain} src={analytics.scriptSrc}></script>
+  )
+}
