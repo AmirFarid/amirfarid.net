@@ -1,6 +1,6 @@
 # amirfarid.net
 
-Personal academic website for Amir Farid.
+Personal academic website for Amir M. Farid.
 
 Built with Astro and deployed as a static site.
 
