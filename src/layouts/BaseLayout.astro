@@ -2,18 +2,37 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
+import { siteMetadata } from '../config/site';
 import '../styles/global.css';
 
 interface Props {
   title?: string;
   description?: string;
   noindex?: boolean;
+  image?: string;
+  ogType?: 'website' | 'article';
 }
 
-const siteTitle = 'Amir M. M. Farid';
-const { title = siteTitle, description = 'Personal academic website of Amir M. M. Farid.', noindex = false } =
-  Astro.props;
+const siteTitle = siteMetadata.title;
+const {
+  title = siteTitle,
+  description = siteMetadata.description,
+  noindex = false,
+  image = siteMetadata.profileImage,
+  ogType = 'website',
+} = Astro.props;
 const fullTitle = title === siteTitle ? siteTitle : `${title} | ${siteTitle}`;
+const canonicalUrl = new URL(Astro.url.pathname, siteMetadata.url).toString();
+const imageUrl = image.startsWith('http') ? image : new URL(image, siteMetadata.url).toString();
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: siteMetadata.name,
+  url: siteMetadata.url,
+  image: siteMetadata.profileImage,
+  sameAs: siteMetadata.sameAs,
+  description: siteMetadata.description,
+};
 ---
 
 <!doctype html>
@@ -21,9 +40,23 @@ const fullTitle = title === siteTitle ? siteTitle : `${title} | ${siteTitle}`;
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="author" content={siteMetadata.author} />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:site_name" content={siteMetadata.name} />
+    <meta property="og:locale" content={siteMetadata.locale} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
     <title>{fullTitle}</title>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <Analytics />
   </head>
   <body>

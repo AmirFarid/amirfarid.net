@@ -21,7 +21,7 @@ const formatDate = (value: Date) =>
   value.toLocaleDateString('en', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
-<BaseLayout title={title} description={summary}>
+<BaseLayout title={title} description={summary} image={image?.src} ogType="article">
   <article class="page container-narrow">
     <header class="stack" style="gap: 16px; margin-bottom: 34px;">
       <p class="eyebrow">{eyebrow}</p>
