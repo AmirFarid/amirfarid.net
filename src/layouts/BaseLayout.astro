@@ -24,15 +24,36 @@ const {
 const fullTitle = title === siteTitle ? siteTitle : `${title} | ${siteTitle}`;
 const canonicalUrl = new URL(Astro.url.pathname, siteMetadata.url).toString();
 const imageUrl = image.startsWith('http') ? image : new URL(image, siteMetadata.url).toString();
-const structuredData = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: siteMetadata.name,
-  url: siteMetadata.url,
-  image: siteMetadata.profileImage,
-  sameAs: siteMetadata.sameAs,
-  description: siteMetadata.description,
-};
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': `${siteMetadata.url}/#person`,
+    name: siteMetadata.name,
+    alternateName: siteMetadata.alternateNames,
+    url: siteMetadata.url,
+    image: siteMetadata.profileImage,
+    sameAs: siteMetadata.sameAs,
+    description: siteMetadata.description,
+    jobTitle: siteMetadata.role,
+    affiliation: {
+      '@type': 'CollegeOrUniversity',
+      name: siteMetadata.affiliation,
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${siteMetadata.url}/#website`,
+    name: siteMetadata.name,
+    alternateName: siteMetadata.alternateNames,
+    url: siteMetadata.url,
+    description: siteMetadata.description,
+    publisher: {
+      '@id': `${siteMetadata.url}/#person`,
+    },
+  },
+];
 ---
 
 <!doctype html>
