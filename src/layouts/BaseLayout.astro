@@ -62,6 +62,7 @@ const structuredData = [
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="author" content={siteMetadata.author} />
+    <meta name="keywords" content={siteMetadata.keywords.join(', ')} />
     <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="canonical" href={canonicalUrl} />
