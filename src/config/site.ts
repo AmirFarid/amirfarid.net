@@ -13,6 +13,7 @@ export const siteMetadata = {
   sameAs: [
     "https://github.com/AmirFarid",
     "https://scholar.google.com/citations?user=YsxSn4EAAAAJ&hl=en",
+    "https://www.linkedin.com/in/amirmfarid/",
   ],
 };
 
