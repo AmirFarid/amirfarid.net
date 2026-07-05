@@ -10,7 +10,10 @@ export const siteMetadata = {
   affiliation: "Michigan Technological University",
   role: "Computer Science graduate student",
   profileImage: "https://github.com/AmirFarid.png",
-  sameAs: ["https://github.com/AmirFarid"],
+  sameAs: [
+    "https://github.com/AmirFarid",
+    "https://scholar.google.com/citations?user=YsxSn4EAAAAJ&hl=en",
+  ],
 };
 
 export const featureFlags = {
