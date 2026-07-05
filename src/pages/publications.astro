@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PublicationItem from '../components/PublicationItem.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 
-const publications = await getCollection('publications');
+const publications = (await getCollection('publications')).sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
 ---
 
 <BaseLayout title="Publications" description="Publication list for Amir M. M. Farid.">
@@ -12,7 +12,7 @@ const publications = await getCollection('publications');
     <SectionHeader
       eyebrow="Publications"
       title="Publications"
-      summary="A conservative list of submitted and in-preparation work. Unavailable details are left as placeholders."
+      summary="Publications and preprints listed from Google Scholar."
     />
     <div class="stack">
       {publications.map((publication) => <PublicationItem {...publication.data} />)}

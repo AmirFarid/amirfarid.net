@@ -14,16 +14,13 @@ interface Props {
 }
 
 const { title, authors, venue, status, year, links = [] } = Astro.props;
+const details = [status, venue, year].filter(Boolean).join(' · ');
 ---
 
 <article class="card stack" style="gap: 10px;">
   <h3>{title}</h3>
   <p class="muted">{authors.join(', ')}</p>
-  <p>
-    <strong>{status}</strong>
-    {venue ? ` · ${venue}` : ' · Venue placeholder'}
-    {year ? ` · ${year}` : ''}
-  </p>
+  <p><strong>{details}</strong></p>
   {links.length > 0 && (
     <div class="button-row">
       {links.map((link) => (
