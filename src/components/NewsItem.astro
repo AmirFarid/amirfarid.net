@@ -1,0 +1,27 @@
+---
+interface Props {
+  title: string;
+  summary: string;
+  date: Date;
+  category: string;
+  href?: string;
+}
+
+const { title, summary, date, category, href } = Astro.props;
+const formattedDate = date.toLocaleDateString('en', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+---
+
+<article class="news-item">
+  <div class="news-meta">
+    <time datetime={date.toISOString()}>{formattedDate}</time>
+    <span>{category}</span>
+  </div>
+  <h3>
+    {href ? <a href={href}>{title}</a> : title}
+  </h3>
+  <p class="muted">{summary}</p>
+</article>

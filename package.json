@@ -12,6 +12,7 @@
     "new:learning": "node scripts/new-content.mjs learning",
     "new:technical": "node scripts/new-content.mjs technical",
     "new:blog": "node scripts/new-content.mjs blog",
+    "new:news": "node scripts/new-content.mjs news",
     "new:project": "node scripts/new-content.mjs project",
     "new:publication": "node scripts/new-content.mjs publication",
     "version:generate": "node scripts/generate-version.mjs"

@@ -1,11 +1,23 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import NewsItem from '../components/NewsItem.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import { featureFlags } from '../config/site';
 
 const projects = (await getCollection('projects')).slice(0, 3);
+const news = (await getCollection('news')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 4);
+const profileLinks = [
+  { label: 'CV', href: '/cv.pdf', mark: 'CV' },
+  { label: 'GitHub', href: 'https://github.com/AmirFarid', mark: 'GH' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/amirmfarid/', mark: 'in' },
+  {
+    label: 'Google Scholar',
+    href: 'https://scholar.google.com/citations?user=YsxSn4EAAAAJ&hl=en',
+    mark: 'GS',
+  },
+];
 ---
 
 <BaseLayout
@@ -41,15 +53,39 @@ const projects = (await getCollection('projects')).slice(0, 3);
         <a class="button secondary" href="/cv">CV</a>
       </div>
     </div>
-    <img
-      class="profile-photo"
-      src="https://github.com/AmirFarid.png"
-      alt="Amir M. M. Farid"
-      width="260"
-      height="260"
-      loading="eager"
-      decoding="async"
+    <aside class="profile-panel" aria-label="Profile links">
+      <img
+        class="profile-photo"
+        src="https://github.com/AmirFarid.png"
+        alt="Amir M. M. Farid"
+        width="260"
+        height="260"
+        loading="eager"
+        decoding="async"
+      />
+      <div class="profile-link-list">
+        {
+          profileLinks.map((link) => (
+            <a class="profile-link" href={link.href}>
+              <span class="profile-link-mark" aria-hidden="true">
+                {link.mark}
+              </span>
+              <span>{link.label}</span>
+            </a>
+          ))
+        }
+      </div>
+    </aside>
+  </section>
+
+  <section class="page container stack">
+    <SectionHeader
+      title="News"
+      summary="Recent website updates, contributions, achievements, and writing."
     />
+    <div class="news-list">
+      {news.map((item) => <NewsItem {...item.data} />)}
+    </div>
   </section>
 
   <section class="page container stack">
@@ -109,16 +145,4 @@ const projects = (await getCollection('projects')).slice(0, 3);
     </div>
   </section>
 
-  <section class="page container stack">
-    <SectionHeader title="Links" summary="Placeholder links are ready to be replaced with confirmed public profiles." />
-    <div class="button-row">
-      <a class="button secondary" href="/cv.pdf">CV</a>
-      <a class="button secondary" href="https://github.com/AmirFarid">GitHub</a>
-      <a class="button secondary" href="https://www.linkedin.com/in/amirmfarid/">LinkedIn</a>
-      <a class="button secondary" href="https://scholar.google.com/citations?user=YsxSn4EAAAAJ&hl=en">
-        Google Scholar
-      </a>
-      <a class="button secondary" href="#">Email</a>
-    </div>
-  </section>
 </BaseLayout>

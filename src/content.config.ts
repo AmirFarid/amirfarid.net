@@ -54,6 +54,17 @@ const blog = defineCollection({
   }),
 });
 
+const news = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    summary: z.string(),
+    date: z.coerce.date(),
+    category: z.string(),
+    href: z.string().optional(),
+  }),
+});
+
 const projects = defineCollection({
   type: "content",
   schema: z.object({
@@ -84,6 +95,7 @@ export const collections = {
   learning,
   technical,
   blog,
+  news,
   projects,
   publications,
 };
