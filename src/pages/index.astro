@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import NewsItem from '../components/NewsItem.astro';
+import ProfileLinkIcon from '../components/ProfileLinkIcon.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import { featureFlags } from '../config/site';
@@ -9,15 +10,15 @@ import { featureFlags } from '../config/site';
 const projects = (await getCollection('projects')).slice(0, 3);
 const news = (await getCollection('news')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 4);
 const profileLinks = [
-  { label: 'CV', href: '/cv.pdf', mark: 'CV' },
-  { label: 'GitHub', href: 'https://github.com/AmirFarid', mark: 'GH' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/amirmfarid/', mark: 'in' },
+  { label: 'CV', href: '/cv.pdf', icon: 'cv' },
+  { label: 'GitHub', href: 'https://github.com/AmirFarid', icon: 'github' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/amirmfarid/', icon: 'linkedin' },
   {
     label: 'Google Scholar',
     href: 'https://scholar.google.com/citations?user=YsxSn4EAAAAJ&hl=en',
-    mark: 'GS',
+    icon: 'scholar',
   },
-];
+] as const;
 ---
 
 <BaseLayout
@@ -66,9 +67,9 @@ const profileLinks = [
       <div class="profile-link-list">
         {
           profileLinks.map((link) => (
-            <a class="profile-link" href={link.href}>
+            <a class={`profile-link profile-link-${link.icon}`} href={link.href}>
               <span class="profile-link-mark" aria-hidden="true">
-                {link.mark}
+                <ProfileLinkIcon name={link.icon} />
               </span>
               <span>{link.label}</span>
             </a>
