@@ -130,10 +130,6 @@ main {
   --profile-brand: #24292f;
 }
 
-.profile-link-cv {
-  --profile-brand: var(--color-gold);
-}
-
 .profile-link-linkedin {
   --profile-brand: #0a66c2;
 }

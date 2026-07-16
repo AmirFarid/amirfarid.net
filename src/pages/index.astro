@@ -9,7 +9,6 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
 const researchProjects = projects.filter((project) => project.data.category === 'research').slice(0, 2);
 const appliedProjects = projects.filter((project) => project.data.category === 'applied');
 const profileLinks = [
-  { label: 'CV', href: '/cv.pdf', icon: 'cv', external: false },
   { label: 'GitHub', href: 'https://github.com/AmirFarid', icon: 'github', external: true },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/amirmfarid/', icon: 'linkedin', external: true },
   {
@@ -164,7 +163,7 @@ const profileLinks = [
     <a class="card stack writing-link" style="gap: 10px;" href="/service">
       <p class="card-kicker">Academic Service</p>
       <h3>Service and mentoring</h3>
-      <p class="muted">Selected service and mentoring activities listed from my CV.</p>
+      <p class="muted">Selected service and mentoring activities.</p>
     </a>
   </section>
 </BaseLayout>

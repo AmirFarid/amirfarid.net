@@ -1,27 +1,11 @@
 ---
 interface Props {
-  name: 'cv' | 'github' | 'linkedin' | 'scholar' | 'email';
+  name: 'github' | 'linkedin' | 'scholar' | 'email';
 }
 
 const { name } = Astro.props;
 ---
 
-{
-  name === 'cv' && (
-    <svg class="profile-link-icon" viewBox="0 0 24 24" aria-hidden="true">
-      <path
-        d="M6.5 3.5h7.2l3.8 3.8v13.2h-11V3.5Z"
-        fill="none"
-        stroke="currentColor"
-        stroke-linejoin="round"
-        stroke-width="1.9"
-      />
-      <path d="M13.5 3.8v3.9h3.8" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.9" />
-      <path d="M8.8 12h6.4M8.8 15.2h5.2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.9" />
-    </svg>
-  )
-}
-{
   name === 'github' && (
     <svg class="profile-link-icon" viewBox="0 0 24 24" aria-hidden="true">
       <path
