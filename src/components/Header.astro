@@ -7,6 +7,7 @@ const navItems = [
   { href: '/projects', label: 'Projects', enabled: featureFlags.projects },
   { href: '/publications', label: 'Publications', enabled: featureFlags.publications },
   { href: '/blog', label: 'Blog', enabled: featureFlags.blog },
+  { href: '/cv.pdf', label: 'CV' },
 ].filter((item) => item.enabled !== false);
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';

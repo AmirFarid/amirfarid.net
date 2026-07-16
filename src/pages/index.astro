@@ -9,6 +9,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
 const researchProjects = projects.filter((project) => project.data.category === 'research').slice(0, 2);
 const appliedProjects = projects.filter((project) => project.data.category === 'applied');
 const profileLinks = [
+  { label: 'CV', href: '/cv.pdf', icon: 'cv', external: false },
   { label: 'GitHub', href: 'https://github.com/AmirFarid', icon: 'github', external: true },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/amirmfarid/', icon: 'linkedin', external: true },
   {
