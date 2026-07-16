@@ -1,14 +1,16 @@
 ---
 title: K-12 LLM Security Hackathon Infrastructure
-summary: Infrastructure and challenge design for teaching jailbreaks, prompt injection, and LLM security concepts to K-12 students.
+summary: Distributed local-LLM infrastructure and hands-on challenges for teaching prompt injection, jailbreaks, and practical LLM security to K-12 students.
 role: Infrastructure and challenge designer
 technologies:
   - Python
   - Ollama
   - HAProxy
   - Raspberry Pi
-  - prompt-injection challenges
-status: Completed prototype
+status: Completed · June 2026
+category: applied
+order: 3
+agendaConnection: Applied LLM security and education
 image:
   src: /images/project-llm-hackathon.svg
   alt: Abstract challenge board for an educational workshop

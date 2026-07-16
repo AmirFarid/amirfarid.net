@@ -12,8 +12,18 @@ const publications = (await getCollection('publications')).sort((a, b) => (b.dat
     <SectionHeader
       eyebrow="Publications"
       title="Publications"
-      summary="Publications and preprints listed from Google Scholar."
+      summary="Peer-reviewed publications and public preprints. Current systems manuscripts are described on the Projects page until they are publicly available."
     />
+    <div class="button-row">
+      <a
+        class="button secondary"
+        href="https://scholar.google.com/citations?user=YsxSn4EAAAAJ&hl=en"
+        target="_blank"
+        rel="me noopener noreferrer"
+      >
+        Google Scholar
+      </a>
+    </div>
     <div class="stack">
       {publications.map((publication) => <PublicationItem {...publication.data} />)}
     </div>

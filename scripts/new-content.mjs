@@ -17,11 +17,6 @@ const collections = {
     directory: "src/content/blog",
     extension: "md",
   },
-  news: {
-    template: "templates/content/news.md",
-    directory: "src/content/news",
-    extension: "md",
-  },
   project: {
     template: "templates/content/project.md",
     directory: "src/content/projects",
@@ -39,7 +34,7 @@ const config = collections[type];
 
 if (!config || !rawSlug) {
   console.error("Usage: npm run new:<type> -- <slug> [Title]");
-  console.error("Types: learning, technical, blog, news, project, publication");
+  console.error("Types: learning, technical, blog, project, publication");
   process.exit(1);
 }
 

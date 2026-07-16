@@ -2,64 +2,132 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 
-const interests = [
-  'Security, privacy, and reliability for decentralized systems',
-  'Decentralized storage and distributed repair',
-  'Decentralized inference and AI-assisted security',
-  'Edge, IoT, and connected infrastructure security',
-  'Trusted hardware and trusted execution environments',
-  'Storage-layer and file-system-aware security mechanisms',
-  'Post-quantum-aware decentralized system design',
+const directions = [
+  {
+    label: 'Foundation and Current Work',
+    title: 'Secure and Trustworthy Distributed Systems',
+    items: [
+      'Decentralized storage and distributed repair',
+      'Trusted hardware and trusted execution environments',
+      'Authenticated storage and write mechanisms',
+      'Self-auditing and self-repairing infrastructure',
+      'Erasure coding, network coding, and distributed verification',
+      'Integrity, availability, and recovery under partial trust',
+    ],
+  },
+  {
+    label: 'Primary Future Direction',
+    title: 'Trustworthy Decentralized AI',
+    items: [
+      'Decentralized and local inference',
+      'Edge and collaborative intelligence',
+      'Verifiable inference and provenance',
+      'Secure LLM agents and workflow integrity',
+      'Heterogeneous coordination across partially trusted nodes',
+      'User-controlled AI and data sovereignty',
+      'AI-assisted and useful-work consensus as emerging research questions',
+    ],
+  },
+  {
+    label: 'Parallel Emerging Direction',
+    title: 'Privacy-Preserving and Post-Quantum Security',
+    items: [
+      'Private inference and distributed computation',
+      'Privacy-preserving verification',
+      'Secure and verifiable provenance',
+      'Cryptographic agility',
+      'Post-quantum authentication, signatures, and key establishment',
+      'Long-term confidentiality for distributed intelligent systems',
+    ],
+  },
 ];
 
-const technicalAreas =
-  'C/C++ · Python · Linux · Systems Security · Distributed Systems · Decentralized Systems · Storage Systems · Edge/IoT Security · Trusted Hardware · SGX · SEV · TDX · Erasure Coding · Network Coding · LLMs';
+const methods = [
+  {
+    label: 'Systems and implementation',
+    text: 'C/C++, Python, Linux, embedded systems, flash storage, and storage-system prototyping',
+  },
+  {
+    label: 'Security and trust',
+    text: 'Trusted execution environments, cryptographic verification, authenticated storage, and threat modeling',
+  },
+  {
+    label: 'Distributed methods',
+    text: 'Decentralized infrastructure, erasure coding, network coding, distributed repair, and partial-trust system design',
+  },
+  {
+    label: 'AI security',
+    text: 'Local LLM infrastructure, prompt-injection and jailbreak experiments, and LLM-security challenge design',
+  },
+];
 ---
 
-<BaseLayout title="Research" description="Research overview and themes for Amir M. M. Farid.">
+<BaseLayout
+  title="Research"
+  description="Trustworthy decentralized intelligence research agenda for Amir M. M. Farid."
+>
   <div class="page container stack">
     <SectionHeader
       eyebrow="Research"
-      title="Secure, private, and reliable decentralized systems"
-      summary="My research focuses on secure, private, and reliable decentralized systems."
+      title="Trustworthy Decentralized Intelligence"
+      summary="How can decentralized intelligent systems remain secure, private, verifiable, resilient, and efficient when no single participant or infrastructure provider can be fully trusted?"
     />
 
     <section class="prose">
+      <h2>Research Positioning</h2>
       <p>
-        I am interested in how decentralized infrastructures can operate under partial trust, failures, and adversarial
-        behavior. This includes systems where data, computation, inference, and control are distributed across many
-        components, such as storage nodes, edge devices, IoT systems, and untrusted execution environments.
-      </p>
-    </section>
-
-    <section class="prose">
-      <h2>Research Direction</h2>
-      <p>
-        My current research studies decentralized systems that combine trusted hardware, erasure and network coding,
-        distributed repair, and storage-layer mechanisms to improve integrity, availability, and recoverability without
-        relying on fully trusted infrastructure.
+        My research foundation is in secure and trustworthy distributed systems. From this foundation, I am moving toward
+        trustworthy decentralized AI while developing privacy-preserving and post-quantum mechanisms as a parallel
+        security direction.
       </p>
       <p>
-        I am also interested in decentralized inference and AI-assisted security mechanisms, especially how LLMs and AI
-        agents can help detect, reason about, and mitigate malicious or unsafe behavior in connected and distributed
-        environments.
+        In the longer term, these directions converge in decentralized intelligent systems that are secure, private,
+        verifiable, resilient, and efficient under partial trust.
       </p>
     </section>
 
     <section class="stack">
-      <h2>Core Interests</h2>
+      <h2>Research Directions</h2>
       <div class="grid grid-3">
-        {interests.map((interest) => (
-          <article class="card">
-            <h3>{interest}</h3>
-          </article>
-        ))}
+        {
+          directions.map((direction) => (
+            <article class="card stack direction-card" style="gap: 12px;">
+              <p class="card-kicker">{direction.label}</p>
+              <h3>{direction.title}</h3>
+              <ul class="clean-list">
+                {direction.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
       </div>
     </section>
 
-    <section class="prose">
-      <h2>Technical Areas</h2>
-      <p>{technicalAreas}</p>
+    <section class="stack">
+      <h2>Methods and Technical Experience</h2>
+      <div class="grid grid-2">
+        {
+          methods.map((method) => (
+            <article class="card stack" style="gap: 8px;">
+              <h3>{method.label}</h3>
+              <p class="muted">{method.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="stack">
+      <h2>Research Trajectory</h2>
+      <div class="trajectory" aria-label="Research trajectory">
+        <span>Secure decentralized storage and infrastructure</span>
+        <span aria-hidden="true">-&gt;</span>
+        <span>trustworthy decentralized inference and agents</span>
+        <span aria-hidden="true">-&gt;</span>
+        <span>secure, private, verifiable, resilient decentralized intelligence</span>
+      </div>
     </section>
   </div>
 </BaseLayout>

@@ -5,6 +5,9 @@ role: Replace with confirmed role
 technologies:
   - replace-me
 status: Draft
+category: research
+order: 99
+agendaConnection: Replace with confirmed agenda connection
 image:
   src: /images/replace-me.svg
   alt: Replace with concise image description

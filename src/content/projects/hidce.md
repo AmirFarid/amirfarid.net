@@ -1,20 +1,22 @@
 ---
 title: HiDCE
-summary: Trusted-hardware-assisted decentralized storage with erasure coding, self-audit, and self-repair mechanisms.
+summary: A trusted-hardware-assisted decentralized storage architecture that combines erasure coding, cryptographic verification, self-audit, and self-repair under partially trusted infrastructure.
 role: Researcher
 technologies:
   - C/C++
   - Intel SGX
-  - erasure coding
-  - distributed storage
-  - cryptographic verification
-status: Submitted
+  - Erasure coding
+  - Cryptographic verification
+status: Under review
+category: research
+order: 1
+agendaConnection: Secure and trustworthy distributed systems
 image:
   src: /images/project-hidce.svg
   alt: Abstract diagram representing distributed storage blocks
 tags:
   - trusted hardware
   - decentralized storage
-  - erasure coding
+  - resilient infrastructure
 links: []
 ---

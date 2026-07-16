@@ -4,18 +4,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 
-const projects = await getCollection('projects');
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const researchProjects = projects.filter((project) => project.data.category === 'research');
+const appliedProjects = projects.filter((project) => project.data.category === 'applied');
 ---
 
-<BaseLayout title="Projects" description="Research and teaching projects by Amir M. M. Farid.">
+<BaseLayout title="Projects" description="Research and applied AI security projects by Amir M. M. Farid.">
   <div class="page container stack">
     <SectionHeader
       eyebrow="Projects"
       title="Projects"
-      summary="Selected research systems, prototypes, and teaching infrastructure."
+      summary="These projects show the current foundation of my research agenda. The storage projects study trust, verification, recovery, and partial failure in decentralized infrastructure; the hackathon project reflects my applied work in LLM security and technical education."
     />
-    <div class="grid grid-3">
-      {projects.map((project) => <ProjectCard {...project.data} />)}
-    </div>
+    <section class="stack">
+      <h2>Current Research</h2>
+      <div class="grid grid-2">
+        {researchProjects.map((project) => <ProjectCard {...project.data} />)}
+      </div>
+    </section>
+    <section class="stack">
+      <h2>Applied AI Security and Education</h2>
+      <div class="grid grid-2">
+        {appliedProjects.map((project) => <ProjectCard {...project.data} />)}
+      </div>
+    </section>
   </div>
 </BaseLayout>

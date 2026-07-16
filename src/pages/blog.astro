@@ -12,7 +12,7 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf()
     <SectionHeader
       eyebrow="Blog"
       title="Blog"
-      summary="Personal and professional reflections on research, learning, graduate school, books, and academic growth."
+      summary="Short essays on trustworthy decentralized systems, research decisions, and lessons from building secure infrastructure."
     />
     <div class="grid grid-2">
       {posts.map((post) => (

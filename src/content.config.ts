@@ -54,17 +54,6 @@ const blog = defineCollection({
   }),
 });
 
-const news = defineCollection({
-  type: "content",
-  schema: z.object({
-    title: z.string(),
-    summary: z.string(),
-    date: z.coerce.date(),
-    category: z.string(),
-    href: z.string().optional(),
-  }),
-});
-
 const projects = defineCollection({
   type: "content",
   schema: z.object({
@@ -73,6 +62,9 @@ const projects = defineCollection({
     role: z.string(),
     technologies: z.array(z.string()).default([]),
     status: z.string(),
+    category: z.enum(["research", "applied"]),
+    order: z.number(),
+    agendaConnection: z.string(),
     image: imageSchema,
     tags: z.array(z.string()).default([]),
     links: linkSchema,
@@ -95,7 +87,6 @@ export const collections = {
   learning,
   technical,
   blog,
-  news,
   projects,
   publications,
 };

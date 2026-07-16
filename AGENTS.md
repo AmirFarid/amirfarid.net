@@ -17,6 +17,16 @@ This is Amir M. M. Farid's personal academic website.
 - React only for future interactive learning components
 - React Three Fiber only for future 3D teaching posts
 
+## Research Positioning
+
+- The umbrella is Trustworthy Decentralized Intelligence.
+- Secure and trustworthy distributed systems are the established foundation.
+- Trustworthy decentralized AI is the primary future direction.
+- Privacy-preserving and post-quantum security are parallel emerging directions.
+- Do not imply equal maturity across these directions.
+- Do not reduce Amir's identity to decentralized storage.
+- Do not invent research results, publications, credentials, or expertise.
+
 ## Rules
 
 - Do not add large dependencies without justification.

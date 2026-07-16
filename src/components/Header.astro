@@ -6,10 +6,7 @@ const navItems = [
   { href: '/research', label: 'Research' },
   { href: '/projects', label: 'Projects', enabled: featureFlags.projects },
   { href: '/publications', label: 'Publications', enabled: featureFlags.publications },
-  { href: '/learning', label: 'Learning', enabled: featureFlags.learning },
-  { href: '/technical', label: 'Technical Notes', enabled: featureFlags.technical },
   { href: '/blog', label: 'Blog', enabled: featureFlags.blog },
-  { href: '/cv', label: 'CV' },
 ].filter((item) => item.enabled !== false);
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';

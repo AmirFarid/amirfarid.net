@@ -1,20 +1,20 @@
 ---
-title: Why I Work on Connected Systems Security
-summary: A short reflection on the practical and intellectual motivation behind studying security for connected infrastructure.
+title: Why I Work on Trustworthy Decentralized Systems
+summary: A short explanation of how my current systems-security work connects to trustworthy decentralized intelligence.
 date: 2026-01-20
 image:
   src: /images/blog-connected-systems.svg
-  alt: Abstract connected systems essay cover
+  alt: Abstract trustworthy decentralized-systems illustration
 tags:
   - research
-  - graduate school
-  - connected systems
+  - decentralized systems
+  - trustworthy systems
 ---
 
-Connected systems sit in an uncomfortable place: they are deeply technical, increasingly invisible, and often trusted before they are well understood.
+Modern intelligent services distribute data, computation, and control across clouds, storage nodes, edge devices, and AI components. Yet their designs often rely on infrastructure providers or participants behaving as expected.
 
-That makes them a compelling research area. A storage system, an embedded device, an edge service, or an AI-assisted workflow can look ordinary from the outside while depending on subtle assumptions about trust, failure, and behavior.
+I am interested in systems that remain dependable after those assumptions are weakened. That requires more than adding a security mechanism: it requires explicit trust boundaries, verifiable evidence, recovery paths, and realistic performance constraints.
 
-I am interested in the systems work required to make those assumptions explicit. Good security research does not only add mechanisms. It clarifies what a system promises, what it cannot promise, and where evidence can be collected when something goes wrong.
+My current work begins with secure decentralized storage, trusted hardware, authenticated writes, and erasure or network coding. These systems provide a concrete foundation for studying integrity, availability, repair, and verification under partial trust.
 
-For me, connected systems security is valuable because it joins practical engineering with careful reasoning. It asks for prototypes, measurements, threat models, and humility about deployment constraints.
+The longer-term direction is trustworthy decentralized intelligence: decentralized inference and agents with verifiable provenance, privacy-preserving computation, resilient coordination, and security that can evolve toward post-quantum assumptions.

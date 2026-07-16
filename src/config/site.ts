@@ -22,10 +22,16 @@ export const siteMetadata = {
     "Amir M. M. Farid",
     "amir m. m. farid",
     "amirfarid.net",
+    "trustworthy decentralized intelligence",
+    "secure distributed systems",
+    "decentralized AI",
+    "verifiable inference",
+    "privacy-preserving systems",
+    "post-quantum security",
   ],
   title: "Amir M. M. Farid",
   description:
-    "Personal academic website of Amir M. M. Farid, a Computer Science graduate student working on secure, private, and reliable decentralized systems.",
+    "Personal academic website of Amir M. M. Farid, a Computer Science graduate student at Michigan Technological University studying trustworthy decentralized intelligence under partial trust.",
   url: "https://amirfarid.net",
   locale: "en_US",
   author: "Amir M. M. Farid",
@@ -40,8 +46,6 @@ export const siteMetadata = {
 };
 
 export const featureFlags = {
-  learning: false,
-  technical: false,
   blog: true,
   projects: true,
   publications: true,
