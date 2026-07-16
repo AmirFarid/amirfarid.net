@@ -1,6 +1,8 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProfileLinkIcon from '../components/ProfileLinkIcon.astro';
+import { manualTimelineEntries } from '../data/timeline';
 
 const profileLinks = [
   { label: 'GitHub', href: 'https://github.com/AmirFarid', icon: 'github', external: true },
@@ -13,89 +15,206 @@ const profileLinks = [
   },
   { label: 'Email', href: 'mailto:amir.m.m.farid@gmail.com', icon: 'email', external: false },
 ] as const;
+
+const posts = (await getCollection('blog')).filter((post) => !post.data.draft);
+const publications = await getCollection('publications');
+
+type TimelineEntry = {
+  id: string;
+  displayDate: string;
+  datetime: string;
+  sortDate: string;
+  category: 'Education' | 'Mentoring' | 'Service' | 'Post' | 'Publication';
+  content: string;
+  link?: {
+    href: string;
+    text: string;
+  };
+  suffix?: string;
+};
+
+const postTimelineEntries: TimelineEntry[] = posts.map((post) => ({
+  id: `post-${post.slug}`,
+  displayDate: formatDate(post.data.date),
+  datetime: post.data.date.toISOString().slice(0, 10),
+  sortDate: post.data.date.toISOString().slice(0, 10),
+  category: 'Post',
+  content: 'Published:',
+  link: {
+    href: `/blog/${post.slug}`,
+    text: post.data.title,
+  },
+}));
+
+const publicationTimelineEntries: TimelineEntry[] = publications
+  .filter((publication) => publication.data.year)
+  .map((publication) => {
+    const titleLink = publication.data.links[0]?.url;
+    const title = publication.data.title;
+    const venue = publication.data.venue;
+    const authors = publication.data.authors.join(', ');
+    const status = publication.data.status;
+
+    return {
+      id: `publication-${publication.id}`,
+      displayDate: String(publication.data.year),
+      datetime: String(publication.data.year),
+      sortDate: `${publication.data.year}-01-01`,
+      category: 'Publication',
+      content:
+        status === 'Published'
+          ? 'Published'
+          : status === 'Preprint'
+            ? 'Preprint:'
+            : `${status}:`,
+      link: titleLink ? { href: titleLink, text: title } : undefined,
+      suffix: `${titleLink ? '' : title}${status === 'Published' && venue ? ` in ${venue}` : venue ? ` — ${venue}` : ''}. Authors: ${authors}`,
+    };
+  });
+
+const timelineEntries: TimelineEntry[] = [
+  ...manualTimelineEntries.map((entry) => ({
+    ...entry,
+    content: entry.text,
+  })),
+  ...postTimelineEntries,
+  ...publicationTimelineEntries,
+].sort((a, b) => b.sortDate.localeCompare(a.sortDate));
+
+function formatDate(date: Date) {
+  return new Intl.DateTimeFormat('en', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(date);
+}
 ---
 
 <BaseLayout
   title="Amir M. M. Farid"
-  description="Amir M. M. Farid studies secure decentralized systems and trustworthy decentralized AI at Michigan Technological University."
+  description="Amir M. M. Farid is a computer science researcher at Michigan Technological University working on secure and trustworthy decentralized systems and trustworthy decentralized AI."
 >
-  <section class="hero container hero-with-photo">
-    <div class="stack research-agenda" style="gap: 28px;">
-      <div class="stack" style="gap: 14px;">
-        <h1>Amir M. M. Farid</h1>
+  <div class="page container stack landing-page">
+    <section class="hero hero-with-photo landing-identity" aria-labelledby="landing-title">
+      <div class="stack" style="gap: 18px;">
+        <h1 id="landing-title">Amir M. M. Farid</h1>
+      </div>
+      <aside class="profile-panel" aria-label="Profile image">
+        <img
+          class="profile-photo"
+          src="https://github.com/AmirFarid.png"
+          alt="Amir M. M. Farid"
+          width="260"
+          height="260"
+          loading="eager"
+          decoding="async"
+        />
+      </aside>
+    </section>
+
+    <section class="card stack" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+      <div class="prose">
+        <p>
+          I am a computer science graduate student at <strong>Michigan Technological University</strong>. I joined
+          Michigan Tech in <strong>Spring 2025</strong> and expect to complete my
+          <strong>M.S. in Computer Science in Fall 2026</strong>.
+        </p>
+        <p>
+          At Michigan Tech, I work with <strong>Dr. Bo Chen</strong> on secure and trustworthy decentralized systems. My
+          current research focuses on decentralized storage and distributed infrastructure that must remain dependable
+          even when participants or service providers cannot be fully trusted.
+        </p>
+        <p>
+          Before joining Michigan Tech, I studied Computer Engineering at <strong>Islamic Azad University</strong>,
+          where I worked with <strong>Dr. Mostafa Haghi Kashani</strong>.
+        </p>
+        <p>Outside research, I enjoy <strong>biking and reading</strong>.</p>
+      </div>
+    </section>
+
+    <section class="card stack" aria-labelledby="research-agenda-title">
+      <div class="stack" style="gap: 10px;">
+        <h2 id="research-agenda-title">Research Agenda</h2>
+        <h3>Trustworthy Decentralized Intelligence</h3>
+        <p>
+          I study how decentralized intelligent systems can remain <strong>secure, verifiable, resilient, and efficient</strong>
+          when participants and infrastructure cannot be fully trusted.
+        </p>
       </div>
 
-      <section class="card stack" style="gap: 22px;" aria-labelledby="research-agenda-title">
-        <div class="stack" style="gap: 10px;">
-          <h2 id="research-agenda-title">Research Agenda</h2>
-          <h3>Trustworthy Decentralized Intelligence</h3>
-          <p>
-            I study how decentralized intelligent systems can remain secure, verifiable, resilient, and efficient when
-            participants and infrastructure cannot be fully trusted.
-          </p>
+      <div class="stack" style="gap: 12px;">
+        <p><strong>Current Foundation — Secure and Trustworthy Distributed Systems</strong></p>
+        <p class="muted">
+          My current work focuses on decentralized storage and infrastructure that preserve integrity, availability,
+          recoverability, and verifiability under partial trust.
+        </p>
+      </div>
+
+      <div class="stack" style="gap: 12px;">
+        <p><strong>Primary Direction — Trustworthy Decentralized AI</strong></p>
+        <p class="muted">
+          I am extending this systems foundation toward decentralized and local inference, verifiable provenance, secure
+          agents, collaborative intelligence, and user-controlled AI.
+        </p>
+      </div>
+
+      <div class="stack" style="gap: 10px;">
+        <p><strong>Research Trajectory</strong></p>
+        <div class="trajectory compact-trajectory" aria-label="Research trajectory">
+          <strong>Secure decentralized infrastructure</strong>
+          <span aria-hidden="true">→</span>
+          <strong>Trustworthy decentralized inference and agents</strong>
+          <span aria-hidden="true">→</span>
+          <strong>Secure, private, and verifiable decentralized intelligence</strong>
         </div>
+      </div>
+    </section>
 
-        <div class="grid grid-2">
-          <article class="stack" style="gap: 8px;">
-            <h4 class="card-kicker">Current Foundation</h4>
-            <p><strong>Secure and Trustworthy Distributed Systems</strong></p>
-            <p class="muted">
-              My current work focuses on decentralized storage and infrastructure that preserve integrity, availability,
-              recoverability, and verifiability under partial trust.
-            </p>
-          </article>
-
-          <article class="stack" style="gap: 8px;">
-            <h4 class="card-kicker">Primary Direction</h4>
-            <p><strong>Trustworthy Decentralized AI</strong></p>
-            <p class="muted">
-              I am extending this systems foundation toward decentralized and local inference, verifiable provenance,
-              secure agents, collaborative intelligence, and user-controlled AI.
-            </p>
-          </article>
-        </div>
-
-        <div class="stack" style="gap: 10px;">
-          <h4 class="card-kicker">Research Trajectory</h4>
-          <div class="trajectory compact-trajectory" aria-label="Research trajectory">
-            <strong>Secure decentralized infrastructure</strong>
-            <span aria-hidden="true">→</span>
-            <strong>trustworthy decentralized inference and agents</strong>
-            <span aria-hidden="true">→</span>
-            <strong>secure, private, and verifiable decentralized intelligence</strong>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <aside class="profile-panel" aria-label="Profile links">
-      <img
-        class="profile-photo"
-        src="https://github.com/AmirFarid.png"
-        alt="Amir M. M. Farid"
-        width="260"
-        height="260"
-        loading="eager"
-        decoding="async"
-      />
-      <div class="profile-link-list">
+    <section class="stack" aria-labelledby="timeline-title">
+      <h2 id="timeline-title">News and Milestones</h2>
+      <ol class="timeline-list">
         {
-          profileLinks.map((link) => (
-            <a
-              class={`profile-link profile-link-${link.icon}`}
-              href={link.href}
-              aria-label={link.label}
-              title={link.label}
-              target={link.external ? '_blank' : undefined}
-              rel={link.external ? 'me noopener noreferrer' : undefined}
-            >
-              <span class="profile-link-mark" aria-hidden="true">
-                <ProfileLinkIcon name={link.icon} />
-              </span>
-            </a>
+          timelineEntries.map((entry) => (
+            <li class="timeline-item">
+              <time datetime={entry.datetime}>{entry.displayDate}</time>
+              <p class="timeline-content">
+                <span class="timeline-category">{entry.category}</span>
+                <span>
+                  {entry.content}
+                  {entry.link && (
+                    <>
+                      {' '}
+                      <a href={entry.link.href}>{entry.link.text}</a>
+                    </>
+                  )}
+                  {entry.suffix}
+                </span>
+              </p>
+            </li>
           ))
         }
-      </div>
-    </aside>
-  </section>
+      </ol>
+    </section>
+
+    <nav class="profile-link-list landing-social-links" aria-label="Profile links">
+      {
+        profileLinks.map((link) => (
+          <a
+            class={`profile-link profile-link-${link.icon}`}
+            href={link.href}
+            aria-label={link.label}
+            title={link.label}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'me noopener noreferrer' : undefined}
+          >
+            <span class="profile-link-mark" aria-hidden="true">
+              <ProfileLinkIcon name={link.icon} />
+            </span>
+          </a>
+        ))
+      }
+    </nav>
+  </div>
 </BaseLayout>
