@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+
+const serviceEntries = [
+  {
+    label: 'Leadership and Service',
+    title: 'Computer Science Department Representative',
+    organization: 'Graduate Student Government, Michigan Technological University',
+    date: 'Sep. 2025 - Present',
+    text: 'Represent graduate student interests in the Computer Science department through Graduate Student Government activities.',
+  },
+  {
+    label: 'Teaching and Mentoring',
+    title: 'Volunteer Tutor',
+    organization: 'Computer Association, Islamic Azad University',
+    date: 'Sep. 2018 - Feb. 2020',
+    text: 'Taught Linux LPIC-1 fundamentals to undergraduate students.',
+  },
+];
+---
+
+<BaseLayout
+  title="Service"
+  description="Academic service, leadership, and mentoring activities by Amir M. M. Farid."
+>
+  <div class="page container-narrow stack">
+    <SectionHeader
+      eyebrow="Service"
+      title="Academic Service and Mentoring"
+      summary="Selected leadership, service, and mentoring activities from my CV."
+    />
+    <div class="stack">
+      {
+        serviceEntries.map((entry) => (
+          <article class="card stack" style="gap: 10px;">
+            <p class="card-kicker">{entry.label}</p>
+            <h3>{entry.title}</h3>
+            <p class="project-agenda">{entry.organization}</p>
+            <p class="meta">{entry.date}</p>
+            <p class="muted">{entry.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>
