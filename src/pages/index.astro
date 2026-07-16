@@ -81,6 +81,9 @@ const timelineEntries: TimelineEntry[] = [
   ...publicationTimelineEntries,
 ].sort((a, b) => b.sortDate.localeCompare(a.sortDate));
 
+const newsPageSize = 7;
+const newsPageCount = Math.ceil(timelineEntries.length / newsPageSize);
+
 function formatDate(date: Date) {
   return new Intl.DateTimeFormat('en', {
     month: 'short',
@@ -182,11 +185,17 @@ function formatDate(date: Date) {
     </section>
 
     <section class="stack" aria-labelledby="timeline-title">
-      <h2 id="timeline-title">News and Milestones</h2>
-      <ol class="timeline-list">
+      <h2 id="timeline-title" tabindex="-1">News and Milestones</h2>
+      <ol class="timeline-list" data-news-list data-page-size={newsPageSize}>
         {
-          timelineEntries.map((entry) => (
-            <li class="timeline-item">
+          timelineEntries.map((entry, index) => (
+            <li
+              class="timeline-item"
+              data-news-entry
+              data-news-index={index}
+              hidden={index >= newsPageSize}
+              data-page-last={index === Math.min(newsPageSize, timelineEntries.length) - 1 ? 'true' : undefined}
+            >
               <time datetime={entry.datetime}>{entry.displayDate}</time>
               <p class="timeline-content">
                 <span class="timeline-category">{entry.category}</span>
@@ -205,6 +214,41 @@ function formatDate(date: Date) {
           ))
         }
       </ol>
+      {
+        newsPageCount > 1 && (
+          <nav class="news-pagination" aria-label="News pagination" data-news-pagination data-page-count={newsPageCount}>
+            <a
+              class="news-page-link"
+              href="?newsPage=1"
+              aria-label="Previous news page"
+              aria-disabled="true"
+              tabindex="-1"
+              data-news-prev
+            >
+              Previous
+            </a>
+            <div class="news-page-numbers" aria-label="News pages">
+              {Array.from({ length: newsPageCount }, (_, index) => {
+                const page = index + 1;
+                return (
+                  <a
+                    class="news-page-link"
+                    href={`?newsPage=${page}`}
+                    aria-label={`News page ${page}`}
+                    aria-current={page === 1 ? 'page' : undefined}
+                    data-news-page={page}
+                  >
+                    {page}
+                  </a>
+                );
+              })}
+            </div>
+            <a class="news-page-link" href="?newsPage=2" aria-label="Next news page" data-news-next>
+              Next
+            </a>
+          </nav>
+        )
+      }
     </section>
 
     <nav class="profile-link-list landing-social-links" aria-label="Profile links">
@@ -226,4 +270,91 @@ function formatDate(date: Date) {
       }
     </nav>
   </div>
+  <script>
+    const newsList = document.querySelector<HTMLElement>('[data-news-list]');
+    const newsPagination = document.querySelector<HTMLElement>('[data-news-pagination]');
+    const timelineTitle = document.querySelector<HTMLElement>('#timeline-title');
+
+    if (newsList && newsPagination && timelineTitle) {
+      const pageSize = Number(newsList.getAttribute('data-page-size'));
+      const pageCount = Number(newsPagination.getAttribute('data-page-count'));
+      const entries = Array.from(newsList.querySelectorAll<HTMLElement>('[data-news-entry]'));
+      const pageLinks = Array.from(newsPagination.querySelectorAll<HTMLAnchorElement>('[data-news-page]'));
+      const previousLink = newsPagination.querySelector<HTMLAnchorElement>('[data-news-prev]');
+      const nextLink = newsPagination.querySelector<HTMLAnchorElement>('[data-news-next]');
+
+      const getPageFromUrl = () => {
+        const page = Number(new URLSearchParams(window.location.search).get('newsPage') || '1');
+        return Number.isInteger(page) ? Math.min(Math.max(page, 1), pageCount) : 1;
+      };
+
+      const pageUrl = (page: number) => {
+        const url = new URL(window.location.href);
+        if (page <= 1) {
+          url.searchParams.delete('newsPage');
+        } else {
+          url.searchParams.set('newsPage', String(page));
+        }
+        return `${url.pathname}${url.search}${url.hash}`;
+      };
+
+      const updateEdgeLink = (link: HTMLAnchorElement | null, page: number, disabled: boolean) => {
+        if (!link) return;
+        link.setAttribute('href', pageUrl(page));
+        link.setAttribute('aria-disabled', String(disabled));
+        if (disabled) {
+          link.setAttribute('tabindex', '-1');
+        } else {
+          link.removeAttribute('tabindex');
+        }
+      };
+
+      const showPage = (page: number, moveFocus = false) => {
+        const start = (page - 1) * pageSize;
+        const end = start + pageSize;
+        const lastVisible = entries.slice(start, end).at(-1);
+
+        entries.forEach((entry, index) => {
+          const visible = index >= start && index < end;
+          entry.hidden = !visible;
+          entry.removeAttribute('data-page-last');
+        });
+
+        if (lastVisible) {
+          lastVisible.setAttribute('data-page-last', 'true');
+        }
+
+        pageLinks.forEach((link) => {
+          const linkPage = Number(link.getAttribute('data-news-page'));
+          link.setAttribute('href', pageUrl(linkPage));
+          if (linkPage === page) {
+            link.setAttribute('aria-current', 'page');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+
+        updateEdgeLink(previousLink, Math.max(page - 1, 1), page === 1);
+        updateEdgeLink(nextLink, Math.min(page + 1, pageCount), page === pageCount);
+
+        if (moveFocus) {
+          timelineTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          timelineTitle.focus({ preventScroll: true });
+        }
+      };
+
+      newsPagination.addEventListener('click', (event) => {
+        const target = event.target instanceof Element ? event.target : null;
+        const link = target?.closest<HTMLAnchorElement>('a');
+        if (!link || link.getAttribute('aria-disabled') === 'true') return;
+        event.preventDefault();
+        const url = new URL(link.href);
+        window.history.pushState({}, '', `${url.pathname}${url.search}${url.hash}`);
+        showPage(getPageFromUrl(), true);
+      });
+
+      window.addEventListener('popstate', () => showPage(getPageFromUrl(), true));
+      showPage(getPageFromUrl());
+    }
+  </script>
 </BaseLayout>
