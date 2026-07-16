@@ -1,24 +1,70 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
-  <title id="title">Abstract coded storage grid</title>
-  <desc id="desc">A structured grid with highlighted paths and storage blocks.</desc>
+  <title id="title">Protected FTL read and write design</title>
+  <desc id="desc">A flash translation layer diagram with protected read and write request paths.</desc>
   <rect width="1200" height="750" fill="#fbfaf7"/>
-  <g stroke="#dbe4dd" stroke-width="3">
-    <path d="M160 150h880M160 270h880M160 390h880M160 510h880M160 630h880"/>
-    <path d="M160 150v480M336 150v480M512 150v480M688 150v480M864 150v480M1040 150v480"/>
+  <rect x="110" y="86" width="980" height="578" rx="28" fill="#ffffff" stroke="#dbe4dd" stroke-width="4"/>
+
+  <g fill="#e6f0ec" stroke="#0f4f3f" stroke-width="5">
+    <rect x="168" y="178" width="190" height="92" rx="16"/>
+    <rect x="168" y="480" width="190" height="92" rx="16"/>
   </g>
+  <g fill="#0f4f3f" font-family="Arial, sans-serif" font-size="30" font-weight="700">
+    <text x="263" y="215" text-anchor="middle">READ</text>
+    <text x="263" y="248" text-anchor="middle" font-size="22" font-weight="400">request</text>
+    <text x="263" y="517" text-anchor="middle">WRITE</text>
+    <text x="263" y="550" text-anchor="middle" font-size="22" font-weight="400">request</text>
+  </g>
+
+  <g stroke="#9a7a2f" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M358 224h142"/>
+    <path d="M358 526h142"/>
+    <path d="M698 302h116"/>
+    <path d="M698 450h116"/>
+    <path d="M814 302v148"/>
+  </g>
+  <g fill="#9a7a2f">
+    <path d="M500 224l-22-14v28z"/>
+    <path d="M500 526l-22-14v28z"/>
+    <path d="M814 302l-22-14v28z"/>
+    <path d="M814 450l-22-14v28z"/>
+  </g>
+
+  <g>
+    <rect x="498" y="222" width="204" height="306" rx="22" fill="#ffffff" stroke="#0f4f3f" stroke-width="7"/>
+    <path d="M548 222v-38c0-45 29-78 52-78s52 33 52 78v38" fill="none" stroke="#0f4f3f" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="600" cy="300" r="18" fill="#9a7a2f"/>
+    <path d="M600 318v32" stroke="#9a7a2f" stroke-width="8" stroke-linecap="round"/>
+    <path d="M540 392h120M540 430h120M540 468h84" stroke="#dbe4dd" stroke-width="8" stroke-linecap="round"/>
+    <text x="600" y="570" text-anchor="middle" fill="#0f4f3f" font-family="Arial, sans-serif" font-size="28" font-weight="700">FTL guard</text>
+  </g>
+
   <g fill="#ffffff" stroke="#0f4f3f" stroke-width="5">
-    <rect x="204" y="194" width="88" height="52" rx="10"/>
-    <rect x="380" y="314" width="88" height="52" rx="10"/>
-    <rect x="556" y="434" width="88" height="52" rx="10"/>
-    <rect x="732" y="314" width="88" height="52" rx="10"/>
-    <rect x="908" y="194" width="88" height="52" rx="10"/>
+    <rect x="842" y="178" width="214" height="394" rx="18"/>
   </g>
-  <path d="M248 220C420 220 392 340 424 340c78 0 84 120 176 120 96 0 96-120 176-120 42 0 14-120 176-120" fill="none" stroke="#9a7a2f" stroke-width="10" stroke-linecap="round"/>
+  <g stroke="#dbe4dd" stroke-width="4">
+    <path d="M842 276h214M842 374h214M842 472h214"/>
+    <path d="M913 178v394M984 178v394"/>
+  </g>
+  <g fill="#e6f0ec" stroke="#0f4f3f" stroke-width="4">
+    <rect x="866" y="204" width="48" height="46" rx="8"/>
+    <rect x="936" y="204" width="48" height="46" rx="8"/>
+    <rect x="1006" y="204" width="28" height="46" rx="8"/>
+    <rect x="866" y="302" width="48" height="46" rx="8"/>
+    <rect x="936" y="302" width="48" height="46" rx="8"/>
+    <rect x="1006" y="302" width="28" height="46" rx="8"/>
+    <rect x="866" y="400" width="48" height="46" rx="8"/>
+    <rect x="936" y="400" width="48" height="46" rx="8"/>
+    <rect x="1006" y="400" width="28" height="46" rx="8"/>
+    <rect x="866" y="498" width="48" height="46" rx="8"/>
+    <rect x="936" y="498" width="48" height="46" rx="8"/>
+    <rect x="1006" y="498" width="28" height="46" rx="8"/>
+  </g>
+  <text x="949" y="620" text-anchor="middle" fill="#0f4f3f" font-family="Arial, sans-serif" font-size="28" font-weight="700">flash pages</text>
+
   <g fill="#0f4f3f">
-    <circle cx="248" cy="220" r="16"/>
-    <circle cx="424" cy="340" r="16"/>
-    <circle cx="600" cy="460" r="16"/>
-    <circle cx="776" cy="340" r="16"/>
-    <circle cx="952" cy="220" r="16"/>
+    <circle cx="358" cy="224" r="12"/>
+    <circle cx="358" cy="526" r="12"/>
+    <circle cx="814" cy="302" r="12"/>
+    <circle cx="814" cy="450" r="12"/>
   </g>
 </svg>

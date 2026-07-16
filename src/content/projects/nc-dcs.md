@@ -13,7 +13,7 @@ order: 2
 agendaConnection: Secure and trustworthy distributed systems
 image:
   src: /images/project-nc-dcs.svg
-  alt: Abstract grid representing coded storage paths
+  alt: Protected flash translation layer handling read and write requests
 tags:
   - authenticated writes
   - network coding
