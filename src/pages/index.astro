@@ -1,13 +1,7 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProfileLinkIcon from '../components/ProfileLinkIcon.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import SectionHeader from '../components/SectionHeader.astro';
 
-const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
-const researchProjects = projects.filter((project) => project.data.category === 'research').slice(0, 2);
-const appliedProjects = projects.filter((project) => project.data.category === 'applied');
 const profileLinks = [
   { label: 'GitHub', href: 'https://github.com/AmirFarid', icon: 'github', external: true },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/amirmfarid/', icon: 'linkedin', external: true },
@@ -26,27 +20,55 @@ const profileLinks = [
   description="Computer Science graduate student studying trustworthy decentralized intelligence under partial trust."
 >
   <section class="hero container hero-with-photo">
-    <div class="stack" style="gap: 28px;">
+    <div class="stack research-agenda" style="gap: 28px;">
       <div class="stack" style="gap: 14px;">
         <p class="eyebrow">Computer Science Graduate Student - Michigan Technological University</p>
         <h1>Amir M. M. Farid</h1>
-        <p class="lead">Trustworthy Decentralized Intelligence</p>
       </div>
-      <div class="stack" style="gap: 16px; max-width: 850px;">
-        <p>
-          I study how decentralized systems can remain secure, verifiable, resilient, and efficient when participants
-          and infrastructure cannot be fully trusted.
-        </p>
-        <p class="muted">
-          My current work focuses on secure decentralized storage and trustworthy distributed infrastructure. Building
-          on that systems foundation, I am moving toward trustworthy decentralized AI.
-        </p>
-      </div>
-      <div class="button-row">
-        <a class="button" href="/research">Research</a>
-        <a class="button secondary" href="/research#publications">Publications</a>
-      </div>
+
+      <section class="card stack" style="gap: 22px;" aria-labelledby="research-agenda-title">
+        <div class="stack" style="gap: 10px;">
+          <h2 id="research-agenda-title">Research Agenda</h2>
+          <h3>Trustworthy Decentralized Intelligence</h3>
+          <p>
+            I study how decentralized intelligent systems can remain secure, verifiable, resilient, and efficient when
+            participants and infrastructure cannot be fully trusted.
+          </p>
+        </div>
+
+        <div class="grid grid-2">
+          <article class="stack" style="gap: 8px;">
+            <h4 class="card-kicker">Current Foundation</h4>
+            <p><strong>Secure and Trustworthy Distributed Systems</strong></p>
+            <p class="muted">
+              My current work focuses on decentralized storage and infrastructure that preserve integrity, availability,
+              recoverability, and verifiability under partial trust.
+            </p>
+          </article>
+
+          <article class="stack" style="gap: 8px;">
+            <h4 class="card-kicker">Primary Direction</h4>
+            <p><strong>Trustworthy Decentralized AI</strong></p>
+            <p class="muted">
+              I am extending this systems foundation toward decentralized and local inference, verifiable provenance,
+              secure agents, collaborative intelligence, and user-controlled AI.
+            </p>
+          </article>
+        </div>
+
+        <div class="stack" style="gap: 10px;">
+          <h4 class="card-kicker">Research Trajectory</h4>
+          <div class="trajectory compact-trajectory" aria-label="Research trajectory">
+            <strong>Secure decentralized infrastructure</strong>
+            <span aria-hidden="true">-&gt;</span>
+            <strong>trustworthy decentralized inference and agents</strong>
+            <span aria-hidden="true">-&gt;</span>
+            <strong>secure, private, and verifiable decentralized intelligence</strong>
+          </div>
+        </div>
+      </section>
     </div>
+
     <aside class="profile-panel" aria-label="Profile links">
       <img
         class="profile-photo"
@@ -75,60 +97,5 @@ const profileLinks = [
         }
       </div>
     </aside>
-  </section>
-
-  <section class="page container stack">
-    <SectionHeader
-      title="Research Agenda"
-      summary="A focused trajectory from secure decentralized systems toward trustworthy decentralized AI."
-    />
-    <div class="grid grid-3">
-      <article class="card stack" style="gap: 10px;">
-        <p class="card-kicker">Current foundation</p>
-        <h3>Secure and trustworthy decentralized systems</h3>
-        <p class="muted">Decentralized storage and distributed infrastructure under partial trust.</p>
-      </article>
-      <article class="card stack" style="gap: 10px;">
-        <p class="card-kicker">Research direction</p>
-        <h3>Trustworthy decentralized AI</h3>
-        <p class="muted">
-          Decentralized inference, provenance, and secure intelligent agents built on systems foundations.
-        </p>
-      </article>
-      <article class="card stack" style="gap: 10px;">
-        <p class="card-kicker">Security focus</p>
-        <h3>Privacy-preserving and verifiable computation</h3>
-        <p class="muted">Mechanisms for coordination and computation when participants cannot be fully trusted.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="page container stack">
-    <SectionHeader title="Research Trajectory" />
-    <div class="trajectory" aria-label="Research trajectory">
-      <span>Secure decentralized systems</span>
-      <span aria-hidden="true">-&gt;</span>
-      <span>trustworthy decentralized AI</span>
-    </div>
-  </section>
-
-  <section class="page container stack">
-    <SectionHeader
-      title="Current Research"
-      summary="Systems projects that form the current foundation of my broader research agenda."
-    />
-    <div class="grid grid-2">
-      {researchProjects.map((project) => <ProjectCard {...project.data} />)}
-    </div>
-  </section>
-
-  <section class="page container stack">
-    <SectionHeader
-      title="Applied AI Security"
-      summary="Selected work in LLM security infrastructure, experimentation, and technical education."
-    />
-    <div class="grid grid-2">
-      {appliedProjects.map((project) => <ProjectCard {...project.data} />)}
-    </div>
   </section>
 </BaseLayout>
