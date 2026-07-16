@@ -1,25 +1,57 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
-  <title id="title">Workshop challenge board</title>
-  <desc id="desc">A clean classroom-style challenge board with connected prompt cards.</desc>
+  <title id="title">LLM security network with lock</title>
+  <desc id="desc">A restrained neural network diagram surrounding a security lock.</desc>
   <rect width="1200" height="750" fill="#f8f7f2"/>
-  <rect x="120" y="100" width="960" height="550" rx="28" fill="#ffffff" stroke="#dbe4dd" stroke-width="4"/>
+  <rect x="120" y="92" width="960" height="566" rx="28" fill="#ffffff" stroke="#dbe4dd" stroke-width="4"/>
+
+  <g stroke="#9a7a2f" stroke-width="7" stroke-linecap="round" opacity="0.9">
+    <path d="M298 230 472 320"/>
+    <path d="M298 380 472 320"/>
+    <path d="M298 520 472 430"/>
+    <path d="M472 320 600 246"/>
+    <path d="M472 430 600 504"/>
+    <path d="M600 246 728 320"/>
+    <path d="M600 504 728 430"/>
+    <path d="M728 320 902 230"/>
+    <path d="M728 430 902 380"/>
+    <path d="M728 430 902 520"/>
+  </g>
+
   <g fill="#e6f0ec" stroke="#0f4f3f" stroke-width="5">
-    <rect x="210" y="190" width="250" height="120" rx="18"/>
-    <rect x="740" y="190" width="250" height="120" rx="18"/>
-    <rect x="475" y="430" width="250" height="120" rx="18"/>
+    <circle cx="298" cy="230" r="38"/>
+    <circle cx="298" cy="380" r="38"/>
+    <circle cx="298" cy="520" r="38"/>
+    <circle cx="472" cy="320" r="38"/>
+    <circle cx="472" cy="430" r="38"/>
+    <circle cx="728" cy="320" r="38"/>
+    <circle cx="728" cy="430" r="38"/>
+    <circle cx="902" cy="230" r="38"/>
+    <circle cx="902" cy="380" r="38"/>
+    <circle cx="902" cy="520" r="38"/>
   </g>
-  <g stroke="#9a7a2f" stroke-width="8" stroke-linecap="round">
-    <path d="M460 250h280"/>
-    <path d="M335 310l265 120"/>
-    <path d="M865 310L600 430"/>
-  </g>
+
   <g fill="#0f4f3f">
-    <circle cx="335" cy="250" r="22"/>
-    <circle cx="865" cy="250" r="22"/>
-    <circle cx="600" cy="490" r="22"/>
+    <circle cx="298" cy="230" r="12"/>
+    <circle cx="298" cy="380" r="12"/>
+    <circle cx="298" cy="520" r="12"/>
+    <circle cx="472" cy="320" r="12"/>
+    <circle cx="472" cy="430" r="12"/>
+    <circle cx="728" cy="320" r="12"/>
+    <circle cx="728" cy="430" r="12"/>
+    <circle cx="902" cy="230" r="12"/>
+    <circle cx="902" cy="380" r="12"/>
+    <circle cx="902" cy="520" r="12"/>
   </g>
-  <g stroke="#5f675f" stroke-width="5" stroke-linecap="round">
-    <path d="M270 355h660"/>
-    <path d="M270 590h660"/>
+
+  <g>
+    <rect x="520" y="310" width="160" height="150" rx="18" fill="#ffffff" stroke="#0f4f3f" stroke-width="7"/>
+    <path d="M555 310v-38c0-38 26-66 45-66s45 28 45 66v38" fill="none" stroke="#0f4f3f" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="600" cy="378" r="18" fill="#9a7a2f"/>
+    <path d="M600 394v30" stroke="#9a7a2f" stroke-width="8" stroke-linecap="round"/>
+  </g>
+
+  <g stroke="#5f675f" stroke-width="5" stroke-linecap="round" opacity="0.65">
+    <path d="M220 616h760"/>
+    <path d="M220 144h760"/>
   </g>
 </svg>

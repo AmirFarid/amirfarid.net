@@ -13,7 +13,7 @@ order: 3
 agendaConnection: Applied LLM security and education
 image:
   src: /images/project-llm-hackathon.svg
-  alt: Abstract challenge board for an educational workshop
+  alt: Abstract neural network and lock representing LLM security education
 tags:
   - LLM security
   - education
