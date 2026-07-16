@@ -2,6 +2,9 @@
 title: Helping Organize the 2025 MTU Vehicle Hackathon
 summary: A short recap of my organizer role in a student cybersecurity event focused on web hacking, privilege escalation, and vehicle-oriented security challenges.
 date: 2025-10-02
+image:
+  src: /images/mtu-vehicle-hackathon-2025.jfif
+  alt: Students working at tables during the 2025 MTU Vehicle Hackathon
 tags:
   - cybersecurity education
   - CTF
@@ -21,3 +24,4 @@ For me, helping organize this hackathon fit naturally with my broader interest i
 Reference:
 
 - [2025 MTU Vehicle Hackathon](https://ctf.cs.mtu.edu/)
+- [MTU Events: 2025 Vehicle Hackathon](https://events.mtu.edu/event/2025-vehicle-hackathon-1277)
