@@ -12,7 +12,9 @@ const staticPages = [
 
 export async function GET() {
   const blogPosts = featureFlags.blog
-    ? (await getCollection("blog")).map((post) => `/blog/${post.slug}`)
+    ? (await getCollection("blog"))
+        .filter((post) => !post.data.draft)
+        .map((post) => `/blog/${post.slug}`)
     : [];
   const urls = [...staticPages, ...blogPosts]
     .map((path) => new URL(path, siteMetadata.url).toString())

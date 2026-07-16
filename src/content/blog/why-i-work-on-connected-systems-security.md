@@ -2,6 +2,7 @@
 title: Why I Work on Trustworthy Decentralized Systems
 summary: A short explanation of how my current systems-security work connects to trustworthy decentralized intelligence.
 date: 2026-01-20
+draft: true
 image:
   src: /images/blog-connected-systems.svg
   alt: Abstract trustworthy decentralized-systems illustration
