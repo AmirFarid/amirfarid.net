@@ -13,7 +13,7 @@ order: 1
 agendaConnection: Secure and trustworthy distributed systems
 image:
   src: /images/project-hidce.svg
-  alt: Abstract diagram representing distributed storage blocks
+  alt: Hierarchical trusted decentralized storage architecture
 tags:
   - trusted hardware
   - decentralized storage

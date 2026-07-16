@@ -1,25 +1,70 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
-  <title id="title">Abstract storage system diagram</title>
-  <desc id="desc">Layered blocks connected by clean lines on a quiet academic background.</desc>
+  <title id="title">Hierarchical trusted storage architecture</title>
+  <desc id="desc">A hierarchy diagram for trusted decentralized storage with coordination, verification, coding, and storage nodes.</desc>
   <rect width="1200" height="750" fill="#f7faf8"/>
   <rect x="92" y="86" width="1016" height="578" rx="28" fill="#ffffff" stroke="#dbe4dd" stroke-width="4"/>
+
+  <g stroke="#9a7a2f" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M600 242v74"/>
+    <path d="M410 316h380"/>
+    <path d="M410 316v86"/>
+    <path d="M600 316v86"/>
+    <path d="M790 316v86"/>
+    <path d="M410 494v58"/>
+    <path d="M600 494v58"/>
+    <path d="M790 494v58"/>
+    <path d="M248 552h704"/>
+    <path d="M248 552v58"/>
+    <path d="M424 552v58"/>
+    <path d="M600 552v58"/>
+    <path d="M776 552v58"/>
+    <path d="M952 552v58"/>
+  </g>
+
   <g fill="#e6f0ec" stroke="#0f4f3f" stroke-width="5">
-    <rect x="170" y="178" width="220" height="128" rx="16"/>
-    <rect x="490" y="178" width="220" height="128" rx="16"/>
-    <rect x="810" y="178" width="220" height="128" rx="16"/>
-    <rect x="330" y="444" width="220" height="128" rx="16"/>
-    <rect x="650" y="444" width="220" height="128" rx="16"/>
+    <rect x="440" y="152" width="320" height="90" rx="18"/>
+    <rect x="270" y="402" width="280" height="92" rx="16"/>
+    <rect x="460" y="402" width="280" height="92" rx="16"/>
+    <rect x="650" y="402" width="280" height="92" rx="16"/>
+    <rect x="176" y="610" width="144" height="60" rx="12"/>
+    <rect x="352" y="610" width="144" height="60" rx="12"/>
+    <rect x="528" y="610" width="144" height="60" rx="12"/>
+    <rect x="704" y="610" width="144" height="60" rx="12"/>
+    <rect x="880" y="610" width="144" height="60" rx="12"/>
   </g>
-  <g stroke="#9a7a2f" stroke-width="7" stroke-linecap="round">
-    <path d="M390 242h100"/>
-    <path d="M710 242h100"/>
-    <path d="M280 306l160 138"/>
-    <path d="M600 306L440 444"/>
-    <path d="M920 306L760 444"/>
+
+  <g fill="#0f4f3f" font-family="Arial, sans-serif" text-anchor="middle">
+    <text x="600" y="190" font-size="30" font-weight="700">trusted root</text>
+    <text x="600" y="221" font-size="21">coordination</text>
+    <text x="410" y="439" font-size="27" font-weight="700">verify</text>
+    <text x="410" y="469" font-size="20">integrity</text>
+    <text x="600" y="439" font-size="27" font-weight="700">encode</text>
+    <text x="600" y="469" font-size="20">resilience</text>
+    <text x="790" y="439" font-size="27" font-weight="700">repair</text>
+    <text x="790" y="469" font-size="20">availability</text>
+    <text x="248" y="649" font-size="22" font-weight="700">node</text>
+    <text x="424" y="649" font-size="22" font-weight="700">node</text>
+    <text x="600" y="649" font-size="22" font-weight="700">node</text>
+    <text x="776" y="649" font-size="22" font-weight="700">node</text>
+    <text x="952" y="649" font-size="22" font-weight="700">node</text>
   </g>
-  <circle cx="280" cy="242" r="30" fill="#0f4f3f"/>
-  <circle cx="600" cy="242" r="30" fill="#0f4f3f"/>
-  <circle cx="920" cy="242" r="30" fill="#0f4f3f"/>
-  <circle cx="440" cy="508" r="30" fill="#0f4f3f"/>
-  <circle cx="760" cy="508" r="30" fill="#0f4f3f"/>
+
+  <g>
+    <rect x="526" y="286" width="148" height="86" rx="14" fill="#ffffff" stroke="#0f4f3f" stroke-width="6"/>
+    <path d="M558 286v-24c0-30 22-52 42-52s42 22 42 52v24" fill="none" stroke="#0f4f3f" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="600" cy="326" r="12" fill="#9a7a2f"/>
+    <path d="M600 338v18" stroke="#9a7a2f" stroke-width="7" stroke-linecap="round"/>
+  </g>
+
+  <g fill="#0f4f3f">
+    <circle cx="600" cy="242" r="12"/>
+    <circle cx="410" cy="316" r="12"/>
+    <circle cx="600" cy="316" r="12"/>
+    <circle cx="790" cy="316" r="12"/>
+    <circle cx="248" cy="552" r="10"/>
+    <circle cx="424" cy="552" r="10"/>
+    <circle cx="600" cy="552" r="10"/>
+    <circle cx="776" cy="552" r="10"/>
+    <circle cx="952" cy="552" r="10"/>
+  </g>
 </svg>
