@@ -85,13 +85,14 @@ const profileLinks = [
             <a
               class={`profile-link profile-link-${link.icon}`}
               href={link.href}
+              aria-label={link.label}
+              title={link.label}
               target={link.external ? '_blank' : undefined}
               rel={link.external ? 'me noopener noreferrer' : undefined}
             >
               <span class="profile-link-mark" aria-hidden="true">
                 <ProfileLinkIcon name={link.icon} />
               </span>
-              <span>{link.label}</span>
             </a>
           ))
         }
