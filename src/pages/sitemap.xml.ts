@@ -1,15 +1,9 @@
-import { getCollection } from "astro:content";
-import { featureFlags, siteMetadata } from "../config/site";
+import { siteMetadata } from "../config/site";
 
-const staticPages = ["/", "/research", "/projects", "/service", "/blog"];
+const staticPages = ["/", "/research", "/projects"];
 
 export async function GET() {
-  const blogPosts = featureFlags.blog
-    ? (await getCollection("blog"))
-        .filter((post) => !post.data.draft)
-        .map((post) => `/blog/${post.slug}`)
-    : [];
-  const urls = [...staticPages, ...blogPosts]
+  const urls = staticPages
     .map((path) => new URL(path, siteMetadata.url).toString())
     .map(
       (url) => `
