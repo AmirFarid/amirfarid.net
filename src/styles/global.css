@@ -208,6 +208,13 @@ p {
   font-size: 1.15rem;
 }
 
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
 .grid {
   display: grid;
   gap: 18px;
@@ -583,6 +590,11 @@ p {
 
   .button-row {
     width: 100%;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .button-row .button {

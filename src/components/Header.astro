@@ -1,14 +1,10 @@
 ---
-import { featureFlags } from '../config/site';
-
 const navItems = [
   { href: '/', label: 'Home' },
   { href: '/research', label: 'Research' },
-  { href: '/projects', label: 'Projects', enabled: featureFlags.projects },
-  { href: '/publications', label: 'Publications', enabled: featureFlags.publications },
-  { href: '/service', label: 'Service' },
-  { href: '/blog', label: 'Blog', enabled: featureFlags.blog },
-].filter((item) => item.enabled !== false);
+  { href: '/service', label: 'Experience' },
+  { href: 'mailto:amir.m.m.farid@gmail.com', label: 'Contact' },
+];
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
@@ -20,7 +16,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
       {
         navItems.map((item) => {
           const itemPath = item.href.replace(/\/$/, '') || '/';
-          const isCurrent = currentPath === itemPath;
+          const isCurrent = item.href.startsWith('/') && currentPath === itemPath;
           return (
             <a href={item.href} aria-current={isCurrent ? 'page' : undefined}>
               {item.label}

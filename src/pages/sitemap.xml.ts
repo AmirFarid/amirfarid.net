@@ -1,14 +1,7 @@
 import { getCollection } from "astro:content";
 import { featureFlags, siteMetadata } from "../config/site";
 
-const staticPages = [
-  "/",
-  "/research",
-  "/projects",
-  "/publications",
-  "/service",
-  "/blog",
-];
+const staticPages = ["/", "/research", "/projects", "/service", "/blog"];
 
 export async function GET() {
   const blogPosts = featureFlags.blog

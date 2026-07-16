@@ -1,104 +1,65 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PublicationItem from '../components/PublicationItem.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 
-const directions = [
-  {
-    label: 'Foundation and Current Work',
-    title: 'Secure and Trustworthy Distributed Systems',
-    items: [
-      'Decentralized storage and distributed repair',
-      'Trusted hardware and trusted execution environments',
-      'Authenticated storage and write mechanisms',
-      'Self-auditing and self-repairing infrastructure',
-      'Erasure coding, network coding, and distributed verification',
-      'Integrity, availability, and recovery under partial trust',
-    ],
-  },
-  {
-    label: 'Primary Future Direction',
-    title: 'Trustworthy Decentralized AI',
-    items: [
-      'Decentralized and local inference',
-      'Edge and collaborative intelligence',
-      'Verifiable inference and provenance',
-      'Secure LLM agents and workflow integrity',
-      'Heterogeneous coordination across partially trusted nodes',
-      'User-controlled AI and data sovereignty',
-      'AI-assisted and useful-work consensus as emerging research questions',
-    ],
-  },
-  {
-    label: 'Parallel Emerging Direction',
-    title: 'Privacy-Preserving and Post-Quantum Security',
-    items: [
-      'Private inference and distributed computation',
-      'Privacy-preserving verification',
-      'Secure and verifiable provenance',
-      'Cryptographic agility',
-      'Post-quantum authentication, signatures, and key establishment',
-      'Long-term confidentiality for distributed intelligent systems',
-    ],
-  },
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const currentResearchProjects = projects.filter((project) => project.data.category === 'research');
+const publications = (await getCollection('publications')).sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
+
+const researchInterests = [
+  'Secure and trustworthy decentralized systems',
+  'Trustworthy decentralized AI',
+  'Privacy-preserving and verifiable computation',
 ];
 
-const methods = [
+const publicationGroups = [
   {
-    label: 'Systems and implementation',
-    text: 'C/C++, Python, Linux, embedded systems, flash storage, and storage-system prototyping',
+    title: 'Journal Articles',
+    items: publications.filter((publication) => publication.data.status === 'Published'),
   },
   {
-    label: 'Security and trust',
-    text: 'Trusted execution environments, cryptographic verification, authenticated storage, and threat modeling',
+    title: 'Preprints',
+    items: publications.filter((publication) => publication.data.status === 'Preprint'),
   },
-  {
-    label: 'Distributed methods',
-    text: 'Decentralized infrastructure, erasure coding, network coding, distributed repair, and partial-trust system design',
-  },
-  {
-    label: 'AI security',
-    text: 'Local LLM infrastructure, prompt-injection and jailbreak experiments, and LLM-security challenge design',
-  },
-];
+].filter((group) => group.items.length > 0);
 ---
 
 <BaseLayout
   title="Research"
-  description="Trustworthy decentralized intelligence research agenda for Amir M. M. Farid."
+  description="Research and publications by Amir M. M. Farid on secure decentralized systems and trustworthy decentralized AI."
 >
   <div class="page container stack">
     <SectionHeader
       eyebrow="Research"
       title="Trustworthy Decentralized Intelligence"
-      summary="How can decentralized intelligent systems remain secure, private, verifiable, resilient, and efficient when no single participant or infrastructure provider can be fully trusted?"
+      summary="Secure decentralized systems -> trustworthy decentralized AI."
     />
 
     <section class="prose">
-      <h2>Research Positioning</h2>
       <p>
-        My research foundation is in secure and trustworthy distributed systems. From this foundation, I am moving toward
-        trustworthy decentralized AI while developing privacy-preserving and post-quantum mechanisms as a parallel
-        security direction.
+        I study how decentralized systems can remain secure, verifiable, resilient, and efficient when participants and
+        infrastructure cannot be fully trusted.
       </p>
       <p>
-        In the longer term, these directions converge in decentralized intelligent systems that are secure, private,
-        verifiable, resilient, and efficient under partial trust.
+        My current research focuses on secure decentralized storage and trustworthy distributed infrastructure, including
+        trusted hardware, authenticated storage, distributed repair, and coding-based reliability.
+      </p>
+      <p>
+        Building on this systems foundation, I am moving toward trustworthy decentralized AI, with particular interest in
+        decentralized inference, verifiable computation and provenance, privacy-preserving coordination, and secure
+        intelligent agents.
       </p>
     </section>
 
     <section class="stack">
-      <h2>Research Directions</h2>
+      <h2>Research Interests</h2>
       <div class="grid grid-3">
         {
-          directions.map((direction) => (
-            <article class="card stack direction-card" style="gap: 12px;">
-              <p class="card-kicker">{direction.label}</p>
-              <h3>{direction.title}</h3>
-              <ul class="clean-list">
-                {direction.items.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
+          researchInterests.map((interest) => (
+            <article class="card stack" style="gap: 8px;">
+              <h3>{interest}</h3>
             </article>
           ))
         }
@@ -106,13 +67,23 @@ const methods = [
     </section>
 
     <section class="stack">
-      <h2>Methods and Technical Experience</h2>
+      <h2>Current Research</h2>
       <div class="grid grid-2">
         {
-          methods.map((method) => (
+          currentResearchProjects.map((project) => (
             <article class="card stack" style="gap: 8px;">
-              <h3>{method.label}</h3>
-              <p class="muted">{method.text}</p>
+              <h3>{project.data.title}</h3>
+              <p class="muted">{project.data.summary}</p>
+              <p><strong>{project.data.status}</strong></p>
+              {project.data.links.length > 0 && (
+                <div class="button-row">
+                  {project.data.links.map((link) => (
+                    <a class="button secondary" href={link.url}>
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              )}
             </article>
           ))
         }
@@ -120,14 +91,41 @@ const methods = [
     </section>
 
     <section class="stack">
-      <h2>Research Trajectory</h2>
+      <h2>Trajectory</h2>
       <div class="trajectory" aria-label="Research trajectory">
-        <span>Secure decentralized storage and infrastructure</span>
+        <span>Secure decentralized systems</span>
         <span aria-hidden="true">-&gt;</span>
-        <span>trustworthy decentralized inference and agents</span>
-        <span aria-hidden="true">-&gt;</span>
-        <span>secure, private, verifiable, resilient decentralized intelligence</span>
+        <span>trustworthy decentralized AI</span>
       </div>
+    </section>
+
+    <section id="publications" class="stack">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Publications</p>
+          <h2>Publications</h2>
+        </div>
+        <a
+          class="button secondary"
+          href="https://scholar.google.com/citations?user=YsxSn4EAAAAJ&hl=en"
+          target="_blank"
+          rel="me noopener noreferrer"
+        >
+          Google Scholar
+        </a>
+      </div>
+      {
+        publicationGroups.map((group) => (
+          <section class="stack" style="gap: 14px;">
+            <h3>{group.title}</h3>
+            <div class="stack" style="gap: 14px;">
+              {group.items.map((publication) => (
+                <PublicationItem {...publication.data} />
+              ))}
+            </div>
+          </section>
+        ))
+      }
     </section>
   </div>
 </BaseLayout>
