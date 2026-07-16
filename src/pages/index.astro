@@ -251,25 +251,25 @@ function formatDate(date: Date) {
       }
     </nav>
   </div>
-  <script>
-    const newsList = document.querySelector<HTMLElement>('[data-news-list]');
-    const newsPagination = document.querySelector<HTMLElement>('[data-news-pagination]');
-    const timelineTitle = document.querySelector<HTMLElement>('#timeline-title');
+  <script is:inline>
+    const newsList = document.querySelector('[data-news-list]');
+    const newsPagination = document.querySelector('[data-news-pagination]');
+    const timelineTitle = document.querySelector('#timeline-title');
 
     if (newsList && newsPagination && timelineTitle) {
       const pageSize = Number(newsList.getAttribute('data-page-size'));
       const pageCount = Number(newsPagination.getAttribute('data-page-count'));
-      const entries = Array.from(newsList.querySelectorAll<HTMLElement>('[data-news-entry]'));
-      const pageLinks = Array.from(newsPagination.querySelectorAll<HTMLAnchorElement>('[data-news-page]'));
-      const previousLink = newsPagination.querySelector<HTMLAnchorElement>('[data-news-prev]');
-      const nextLink = newsPagination.querySelector<HTMLAnchorElement>('[data-news-next]');
+      const entries = Array.from(newsList.querySelectorAll('[data-news-entry]'));
+      const pageLinks = Array.from(newsPagination.querySelectorAll('[data-news-page]'));
+      const previousLink = newsPagination.querySelector('[data-news-prev]');
+      const nextLink = newsPagination.querySelector('[data-news-next]');
 
       const getPageFromUrl = () => {
         const page = Number(new URLSearchParams(window.location.search).get('newsPage') || '1');
         return Number.isInteger(page) ? Math.min(Math.max(page, 1), pageCount) : 1;
       };
 
-      const pageUrl = (page: number) => {
+      const pageUrl = (page) => {
         const url = new URL(window.location.href);
         if (page <= 1) {
           url.searchParams.delete('newsPage');
@@ -279,7 +279,7 @@ function formatDate(date: Date) {
         return `${url.pathname}${url.search}${url.hash}`;
       };
 
-      const updateEdgeLink = (link: HTMLAnchorElement | null, page: number, disabled: boolean) => {
+      const updateEdgeLink = (link, page, disabled) => {
         if (!link) return;
         link.setAttribute('href', pageUrl(page));
         link.setAttribute('aria-disabled', String(disabled));
@@ -290,7 +290,7 @@ function formatDate(date: Date) {
         }
       };
 
-      const showPage = (page: number, moveFocus = false) => {
+      const showPage = (page, moveFocus = false) => {
         const start = (page - 1) * pageSize;
         const end = start + pageSize;
         const lastVisible = entries.slice(start, end).at(-1);
@@ -326,7 +326,7 @@ function formatDate(date: Date) {
 
       newsPagination.addEventListener('click', (event) => {
         const target = event.target instanceof Element ? event.target : null;
-        const link = target?.closest<HTMLAnchorElement>('a');
+        const link = target?.closest('a');
         if (!link || link.getAttribute('aria-disabled') === 'true') return;
         event.preventDefault();
         const url = new URL(link.href);
