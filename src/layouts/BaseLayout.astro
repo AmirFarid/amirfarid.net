@@ -24,6 +24,7 @@ const {
 const fullTitle = title === siteTitle ? siteTitle : `${title} | ${siteTitle}`;
 const canonicalUrl = new URL(Astro.url.pathname, siteMetadata.url).toString();
 const imageUrl = image.startsWith('http') ? image : new URL(image, siteMetadata.url).toString();
+const isHomePage = Astro.url.pathname === '/';
 const structuredData = [
   {
     '@context': 'https://schema.org',
@@ -53,6 +54,24 @@ const structuredData = [
       '@id': `${siteMetadata.url}/#person`,
     },
   },
+  ...(isHomePage
+    ? [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'ProfilePage',
+          '@id': `${siteMetadata.url}/#profile`,
+          url: siteMetadata.url,
+          name: siteMetadata.name,
+          description,
+          mainEntity: {
+            '@id': `${siteMetadata.url}/#person`,
+          },
+          isPartOf: {
+            '@id': `${siteMetadata.url}/#website`,
+          },
+        },
+      ]
+    : []),
 ];
 ---
 

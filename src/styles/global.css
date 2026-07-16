@@ -43,6 +43,12 @@ a:hover {
   color: #0a372c;
 }
 
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-gold) 70%, white);
+  outline-offset: 3px;
+}
+
 img {
   max-width: 100%;
 }
