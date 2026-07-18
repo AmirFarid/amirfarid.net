@@ -184,6 +184,11 @@ h2 {
   font-size: clamp(1.65rem, 3.2vw, 2.35rem);
 }
 
+.section-title {
+  font-size: clamp(1.65rem, 3.2vw, 2.35rem);
+  max-width: none;
+}
+
 h3 {
   font-size: 1.15rem;
 }

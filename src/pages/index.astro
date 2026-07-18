@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProfileLinkIcon from '../components/ProfileLinkIcon.astro';
 import { manualTimelineEntries } from '../data/timeline';
+import { siteMetadata } from '../config/site';
 
 const profileLinks = [
   { label: 'GitHub', href: 'https://github.com/AmirFarid', icon: 'github', external: true },
@@ -95,19 +96,18 @@ function formatDate(date: Date) {
 ---
 
 <BaseLayout
-  title="Amir M. M. Farid"
-  description="Amir M. M. Farid is a computer science researcher at Michigan Technological University working on secure and trustworthy decentralized systems and trustworthy decentralized AI."
+  description="Amir M. Moghadamfarid, published academically as Amirmehdi Moghadamfarid, is a computer science researcher working on trustworthy decentralized systems, decentralized storage, systems security, and decentralized intelligence."
 >
   <div class="page container stack landing-page">
     <section class="hero hero-with-photo landing-identity" aria-labelledby="landing-title">
       <div class="stack" style="gap: 18px;">
-        <h1 id="landing-title">Amir M. M. Farid</h1>
+        <h1 id="landing-title">{siteMetadata.name}</h1>
       </div>
       <aside class="profile-panel" aria-label="Profile image">
         <img
           class="profile-photo"
-          src="https://github.com/AmirFarid.png"
-          alt="Amir M. M. Farid"
+          src={siteMetadata.profileImage}
+          alt={siteMetadata.name}
           width="260"
           height="260"
           loading="eager"
@@ -140,6 +140,7 @@ function formatDate(date: Date) {
           >
           on fog computing and IoT-enabled smart cities. Outside research, I enjoy biking and reading.
         </p>
+        <p>I publish academic work under my full name, Amirmehdi Moghadamfarid.</p>
         <h2 id="research-agenda-title">Research Agenda</h2>
         <h3>Trustworthy Decentralized Intelligence</h3>
         <p>

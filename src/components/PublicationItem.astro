@@ -18,7 +18,7 @@ const details = [status, venue, year].filter(Boolean).join(' · ');
 
 function displayAuthor(author: string) {
   if (/^(AMM Farid|AM MoghadamFarid)$/i.test(author)) {
-    return 'Amir M. M. Farid';
+    return 'Amirmehdi Moghadamfarid';
   }
 
   return author;
@@ -32,7 +32,7 @@ function displayAuthor(author: string) {
       authors.map((author, index) => (
         <>
           {index > 0 && ', '}
-          {displayAuthor(author) === 'Amir M. M. Farid' ? <strong>{displayAuthor(author)}</strong> : displayAuthor(author)}
+          {displayAuthor(author) === 'Amirmehdi Moghadamfarid' ? <strong>{displayAuthor(author)}</strong> : displayAuthor(author)}
         </>
       ))
     }

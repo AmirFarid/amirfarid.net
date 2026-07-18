@@ -9,12 +9,12 @@ const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<BaseLayout title="Posts" description="Public posts by Amir M. M. Farid.">
+<BaseLayout title="Posts" description="Public posts by Amir M. Moghadamfarid.">
   <div class="page container stack">
     <SectionHeader
       eyebrow="Posts"
       title="Posts"
-      summary="Public posts and updates by Amir M. M. Farid."
+      summary="Public posts and updates by Amir M. Moghadamfarid."
     />
     <div class="grid grid-2">
       {posts.map((post) => (
