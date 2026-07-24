@@ -31,7 +31,7 @@ export const siteMetadata = {
   ],
   title: "Amir M. Moghadamfarid | Computer Science Researcher",
   description:
-    "Amir M. Moghadamfarid, published academically as Amirmehdi Moghadamfarid, is a computer science researcher working on trustworthy decentralized systems, decentralized storage, systems security, and decentralized intelligence.",
+    "Computer science researcher studying security, verifiability, and adversarial resilience in decentralized and multi-agent AI systems.",
   url: "https://amirfarid.net",
   locale: "en_US",
   author: "Amir M. Moghadamfarid",

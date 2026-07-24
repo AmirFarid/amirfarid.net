@@ -9,8 +9,8 @@ const currentResearchProjects = projects.filter((project) => project.data.catego
 const publications = (await getCollection('publications')).sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
 
 const researchInterests = [
-  'Secure and trustworthy decentralized systems',
   'Trustworthy decentralized AI',
+  'Secure and trustworthy decentralized systems',
   'Privacy-preserving and verifiable computation',
 ];
 
@@ -33,23 +33,17 @@ const publicationGroups = [
   <div class="page container stack">
     <SectionHeader
       eyebrow="Research"
-      title="Trustworthy Decentralized Intelligence"
-      summary="Secure decentralized systems -> trustworthy decentralized AI."
+      title="Trustworthy Decentralized AI"
+      summary="Trustworthy decentralized AI, with an emphasis on security, verifiability, and adversarial resilience in decentralized and multi-agent systems. Current work focuses on authenticated storage, trusted hardware, and verifiable decentralized infrastructure as foundations for trustworthy AI."
     />
 
     <section class="prose">
       <p>
-        I study how decentralized systems can remain secure, verifiable, resilient, and efficient when participants and
-        infrastructure cannot be fully trusted.
-      </p>
-      <p>
-        My current research focuses on secure decentralized storage and trustworthy distributed infrastructure, including
-        trusted hardware, authenticated storage, distributed repair, and coding-based reliability.
-      </p>
-      <p>
-        Building on this systems foundation, I am moving toward trustworthy decentralized AI, with particular interest in
-        decentralized inference, verifiable computation and provenance, privacy-preserving coordination, and secure
-        intelligent agents.
+        My research focuses on trustworthy decentralized AI, particularly security, verifiability, and adversarial
+        resilience in decentralized and multi-agent systems. I am interested in how AI systems can operate reliably when
+        participants, infrastructure providers, or agents may be faulty, compromised, or mutually untrusted. My current
+        work on authenticated storage, trusted hardware, and decentralized infrastructure provides the systems foundation
+        for this broader research direction.
       </p>
     </section>
 
@@ -68,6 +62,10 @@ const publicationGroups = [
 
     <section class="stack">
       <h2>Current Research</h2>
+      <p class="muted">
+        These projects develop integrity, provenance, and fault-resilience mechanisms that can support trustworthy
+        decentralized AI systems.
+      </p>
       <div class="grid grid-2">
         {
           currentResearchProjects.map((project) => (
