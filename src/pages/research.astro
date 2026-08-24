@@ -9,9 +9,12 @@ const currentResearchProjects = projects.filter((project) => project.data.catego
 const publications = (await getCollection('publications')).sort((a, b) => (b.data.year ?? 0) - (a.data.year ?? 0));
 
 const researchInterests = [
-  'Trustworthy decentralized AI',
-  'Secure and trustworthy decentralized systems',
-  'Privacy-preserving and verifiable computation',
+  'Secure decentralized storage and authenticated writes',
+  'Trusted execution and sensitive computation',
+  'Verifiable decentralized and multi-agent AI systems',
+  'Distributed inference and persistent agent memory',
+  'Reliable provenance for models, data, and agent actions',
+  'Adversarially resilient decentralized intelligence',
 ];
 
 const publicationGroups = [
@@ -33,17 +36,28 @@ const publicationGroups = [
   <div class="page container stack">
     <SectionHeader
       eyebrow="Research"
-      title="Trustworthy Decentralized AI"
-      summary="Trustworthy decentralized AI, with an emphasis on security, verifiability, and adversarial resilience in decentralized and multi-agent systems. Current work focuses on authenticated storage, trusted hardware, and verifiable decentralized infrastructure as foundations for trustworthy AI."
+      title="Secure and Verifiable Distributed Intelligence"
+      summary="A research agenda connecting storage integrity, trusted execution, and distributed-systems resilience with emerging AI infrastructure."
     />
 
     <section class="prose">
       <p>
-        My research focuses on trustworthy decentralized AI, particularly security, verifiability, and adversarial
-        resilience in decentralized and multi-agent systems. I am interested in how AI systems can operate reliably when
-        participants, infrastructure providers, or agents may be faulty, compromised, or mutually untrusted. My current
-        work on authenticated storage, trusted hardware, and decentralized infrastructure provides the systems foundation
-        for this broader research direction.
+        My research is grounded in systems security, with a current focus on secure decentralized storage, authenticated
+        writes, distributed repair, and trusted hardware. I am interested in how distributed infrastructure can preserve
+        integrity, availability, recoverability, and verifiability when storage nodes, service providers, or other
+        participants cannot be fully trusted.
+      </p>
+      <p>
+        Building on this foundation, I want to investigate trustworthy decentralized and multi-agent AI systems. In
+        particular, I am interested in protecting distributed inference and persistent agent memory, establishing
+        reliable provenance for models, data, and agent actions, and using trusted execution to protect sensitive
+        computations. I also want to study how decentralized AI systems can remain operational and verifiable when agents
+        behave maliciously, infrastructure fails, or participants hold inconsistent state.
+      </p>
+      <p>
+        My long-term goal is to connect storage integrity, trusted execution, and distributed-systems resilience with
+        emerging AI infrastructure. This trajectory moves from authenticated and recoverable decentralized storage toward
+        secure agent memory, verifiable inference, and adversarially resilient decentralized intelligence.
       </p>
     </section>
 
@@ -63,8 +77,8 @@ const publicationGroups = [
     <section class="stack">
       <h2>Current Research</h2>
       <p class="muted">
-        These projects develop integrity, provenance, and fault-resilience mechanisms that can support trustworthy
-        decentralized AI systems.
+        These projects develop integrity, availability, recoverability, and verifiability mechanisms for infrastructure
+        that cannot assume fully trusted storage nodes, service providers, or participants.
       </p>
       <div class="grid grid-2">
         {
@@ -91,9 +105,11 @@ const publicationGroups = [
     <section class="stack">
       <h2>Trajectory</h2>
       <div class="trajectory" aria-label="Research trajectory">
-        <span>Secure decentralized systems</span>
+        <span>Authenticated and recoverable decentralized storage</span>
         <span aria-hidden="true">-&gt;</span>
-        <span>trustworthy decentralized AI</span>
+        <span>secure agent memory and verifiable inference</span>
+        <span aria-hidden="true">-&gt;</span>
+        <span>adversarially resilient decentralized intelligence</span>
       </div>
     </section>
 
