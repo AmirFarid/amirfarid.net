@@ -1,5 +1,5 @@
 ---
-title: NC-DCS
+title: AF-DCS
 summary: An audit-less, file-system-friendly decentralized storage design using network coding and FTL-assisted authenticated-write classification.
 role: Researcher
 technologies:
