@@ -1,6 +1,6 @@
 import { siteMetadata } from "../config/site";
 
-const staticPages = ["/", "/research", "/projects"];
+const staticPages = ["/", "/publications", "/projects"];
 
 export async function GET() {
   const urls = staticPages
