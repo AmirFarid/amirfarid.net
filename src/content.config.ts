@@ -13,6 +13,7 @@ const imageSchema = z
   .object({
     src: z.string(),
     alt: z.string(),
+    fit: z.enum(["cover", "contain"]).optional(),
   })
   .optional();
 
